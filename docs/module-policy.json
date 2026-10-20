@@ -1,4 +1,10 @@
 {
   "schema": 1,
-  "disabled": {}
+  "disabled": {
+    "alerts": {
+      "reason": "Fonctionnalité désormais Interdite!",
+      "minimum": "",
+      "maximum": ""
+    }
+  }
 }
