@@ -16,17 +16,9 @@
     <h1>État des modules</h1>
     <p>Une fonctionnalité peut être suspendue temporairement pour corriger un problème ou respecter une demande du serveur. La raison apparaît aussi dans le Companion. Les réglages personnels restent conservés.</p>
     <section aria-labelledby="status-title"><h2 id="status-title">Restrictions en cours</h2><p id="status" role="status">Chargement de la politique…</p><ul id="rules"></ul></section>
-    <section><h2>Administration</h2>
-      <p>Seul le compte GitHub propriétaire du dépôt, <strong>SpirtySprite</strong>, peut exécuter ces commandes. Le pseudo Minecraft ne sert pas de mot de passe. Aucun jeton administrateur n’est présent dans le mod ou sur cette page.</p>
-      <ol>
-        <li>Ouvrez les contrôles GitHub ci-dessous et connectez-vous au compte propriétaire.</li>
-        <li>Cliquez sur <strong>Run workflow</strong>, choisissez <strong>main</strong>, puis le module et l’action <strong>disable</strong> ou <strong>enable</strong>.</li>
-        <li>Pour suspendre un module, indiquez la raison destinée aux joueurs. Laissez les deux versions vides pour toucher toutes les versions compatibles, ou renseignez une plage inclusive.</li>
-        <li>Lancez le workflow. Après sa réussite, les clients connectés récupèrent la politique lors de leur prochaine vérification, effectuée chaque minute.</li>
-      </ol>
-      <p><a class="primary" href="https://github.com/SpirtySprite/minerite-companion/actions/workflows/module-policy.yml">Ouvrir les contrôles protégés sur GitHub ↗</a></p>
-      <p><strong>À partir de 1.43.0-beta.1.</strong> Les versions 1.42.1 et antérieures ne contiennent pas ce mécanisme et ne peuvent pas être désactivées à distance. Une fois intégré, il reste utilisable dans les anciennes versions compatibles sans leur imposer une mise à jour.</p>
-      <p>Si la vérification échoue, le client conserve la dernière politique valide mémorisée. Sans connexion ni politique déjà reçue, aucune nouvelle restriction ne peut être connue. La réactivation retire la restriction ; elle ne démarre pas automatiquement le minage ni une autre action.</p>
+    <section aria-labelledby="availability-title"><h2 id="availability-title">Dans le jeu</h2>
+      <p>Les restrictions sont vérifiées chaque minute. Lorsqu’un module est suspendu, la raison apparaît dans ses réglages et ses actions s’arrêtent. Vos préférences sont conservées.</p>
+      <p>Ce mécanisme est disponible à partir de la version 1.43.0-beta.1. Hors connexion, le Companion conserve la dernière information reçue. La réactivation d’un module ne lance aucune action automatiquement.</p>
     </section>
   </main>
   <footer><a href="documentation.html">← Documentation</a><p>Projet communautaire indépendant de l’équipe Minerite.</p></footer>

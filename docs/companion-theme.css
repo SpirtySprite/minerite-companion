@@ -19,3 +19,5 @@ main,.docs-main{max-width:1240px;padding:0 24px}.hero,.docs-hero{position:relati
 @media(max-width:520px){.site-header nav{display:grid;grid-template-columns:1fr 1fr;gap:5px}.site-header nav a{text-align:center}.site-header nav .download{margin:0;justify-content:center}.site-header nav a[aria-current=page]{background:#e3dad1}}
 
 .download-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.download-card{padding:30px;border:1px solid var(--line);background:var(--surface);border-radius:16px}.download-card h2{font-size:28px;margin:14px 0 8px}.download-version{color:var(--accent);font-size:20px}.download-notes{display:block;color:var(--accent);font-size:12px;margin:20px 0}.download-card details{font-size:11px;color:var(--muted)}.download-card code{display:block;overflow-wrap:anywhere;margin-top:12px}.download-history{margin:36px 0 60px;color:var(--muted)}.download-history li{margin:12px 0}.download-history a{color:var(--accent)}@media(max-width:650px){.download-grid{grid-template-columns:1fr}}
+
+.release-actions .start-link{color:#fff;margin:0;text-decoration:none}.release-actions .start-link:hover{color:#fff}

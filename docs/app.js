@@ -1,5 +1,4 @@
-const repo = 'https://github.com/SpirtySprite/minerite-companion';
-const state = { releases: [], channel: 'all', query: '', version: decodeURIComponent(location.hash.slice(1)) };
+const state = { releases: [], downloads: [], channel: 'all', query: '', version: decodeURIComponent(location.hash.slice(1)) };
 const list = document.querySelector('#versions');
 const article = document.querySelector('#release');
 const date = value => new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${value}T12:00:00Z`));
@@ -22,8 +21,13 @@ function render() {
   if (!release) { article.append(node('p', 'empty', state.channel === 'stable' ? 'Les versions stables apparaîtront ici dès leur publication. Les versions de test restent disponibles dans l’onglet Bêtas.' : 'Choisissez une autre catégorie ou modifiez votre recherche.')); return; }
   const meta = node('div', 'release-meta'); meta.append(node('span', 'version-number', `Version ${release.version}`), badge(release), node('time', '', date(release.date))); meta.lastChild.dateTime = release.date;
   article.append(meta, node('h2', '', release.title), node('p', 'release-summary', release.summary));
-  const actions = node('div', 'release-actions'); const github = node('a', '', release.github ? 'Voir sur GitHub ↗' : 'Voir les sources ↗'); github.href = release.github ? `${repo}/releases/tag/v${encodeURIComponent(release.version)}` : `${repo}/blob/main/assets/kiru/patch-notes.json`;
-  const copy = node('button', 'copy-link', 'Copier le lien'); copy.type = 'button'; copy.addEventListener('click', async () => { try { await navigator.clipboard.writeText(`${location.origin}${location.pathname}#${encodeURIComponent(release.version)}`); copy.textContent = 'Lien copié ✓'; } catch { copy.textContent = 'Copiez l’adresse de cette page'; } setTimeout(() => { copy.textContent = 'Copier le lien'; }, 2200); }); actions.append(github, copy); article.append(actions);
+  const actions = node('div', 'release-actions');
+  const file = state.downloads.find(file => file.version === release.version);
+  if (file) {
+    const download = node('a', 'start-link', `Télécharger la version ${release.version} ↓`);
+    download.href = file.url; download.download = file.filename; actions.append(download);
+  }
+  const copy = node('button', 'copy-link', 'Copier le lien'); copy.type = 'button'; copy.addEventListener('click', async () => { try { await navigator.clipboard.writeText(`${location.origin}${location.pathname}#${encodeURIComponent(release.version)}`); copy.textContent = 'Lien copié ✓'; } catch { copy.textContent = 'Copiez l’adresse de cette page'; } setTimeout(() => { copy.textContent = 'Copier le lien'; }, 2200); }); actions.append(copy); article.append(actions);
   const sections = node('div', 'release-sections');
   for (const section of release.sections) { const part = node('section', 'note-section'); part.append(node('h3', '', section.title)); const items = node('ul'); for (const item of section.items) items.append(node('li', '', item)); part.append(items); sections.append(part); }
   article.append(sections); const footer = node('p', 'release-footer'); footer.append(node('strong', '', release.channel === 'beta' ? 'Version de test. ' : 'Version stable. '), document.createTextNode(release.channel === 'beta' ? 'Pour recevoir aussi les prochaines bêtas dans le client, activez le Mode développeur. Chaque téléchargement demande votre accord.' : 'Cette version est proposée à tous les utilisateurs. L’installation s’effectue après la fermeture du jeu, avec votre accord.')); article.append(footer);
@@ -32,3 +36,14 @@ document.querySelectorAll('[data-channel]').forEach(button => button.addEventLis
 document.querySelector('#search').addEventListener('input', event => { state.query = event.target.value; render(); });
 window.addEventListener('hashchange', () => { state.version = decodeURIComponent(location.hash.slice(1)); render(); });
 fetch('patch-notes.json', { cache: 'no-cache' }).then(response => { if (!response.ok) throw new Error('Unavailable'); return response.json(); }).then(data => { state.releases = data.releases; render(); }).catch(() => { article.replaceChildren(node('p', 'empty', 'Le journal est momentanément indisponible. Vous pouvez consulter les notes dans les versions GitHub.')); });
+
+fetch('downloads.json', { cache: 'no-cache' }).then(response => {
+  if (!response.ok) throw new Error('Downloads unavailable');
+  return response.json();
+}).then(data => {
+  state.downloads = data.releases.filter(release => /^downloads\/minerite-companion-[0-9A-Za-z.+-]+\.jar$/.test(release.url));
+  if (state.releases.length) render();
+}).catch(() => {
+  const message = node('p', 'empty', 'Les liens de téléchargement sont momentanément indisponibles. Rechargez la page pour réessayer.');
+  article.after(message);
+});
