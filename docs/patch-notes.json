@@ -2,6 +2,40 @@
   "schema": 1,
   "releases": [
     {
+      "version": "1.44.0",
+      "github": true,
+      "date": "2026-10-20",
+      "channel": "stable",
+      "title": "Disponibilité des modules et améliorations du Companion",
+      "summary": "Le contrôle de disponibilité des modules arrive dans la version stable. Cette mise à jour inclut aussi la correction des aperçus de shulkers, l’assistant de configuration et les téléchargements directs sur le site.",
+      "sections": [
+        {
+          "title": "Contrôle de disponibilité des modules",
+          "items": [
+            "Le Companion vérifie les restrictions au lancement puis chaque minute, avec un contournement du cache pour recevoir les changements sans attendre plusieurs minutes.",
+            "Un module suspendu cesse ses actions et affiche « Désactivé par l’administrateur » avec la raison indiquée. La marche et le minage automatiques s’arrêtent également.",
+            "Vos réglages sont conservés. Réactiver un module ne relance pas automatiquement ses actions. Hors connexion, la dernière politique reçue reste appliquée.",
+            "Les versions 1.42.1 et antérieures ne possèdent pas ce mécanisme : installez cette mise à jour pour recevoir les restrictions."
+          ]
+        },
+        {
+          "title": "Inventaires et premier lancement",
+          "items": [
+            "Correction de la détection de Maj pour l’aperçu des shulkers dans l’inventaire du joueur et les coffres classiques, y compris le coffre de l’Ender. Le contenu affiché dépend des données transmises par le serveur.",
+            "Les nouvelles installations disposent d’un assistant pour choisir le thème, la disposition du HUD et les modules. Le minage automatique reste désactivé à la fin de cette configuration.",
+            "Les installations existantes conservent leurs préférences. L’assistant peut être rouvert dans Réglages → Thème et couleurs."
+          ]
+        },
+        {
+          "title": "Téléchargements et mise à jour",
+          "items": [
+            "Le site propose les fichiers JAR directement, avec des liens depuis le guide et les notes de chaque version publiée.",
+            "Cette version est proposée dans le canal stable, sans activer le mode développeur. Après votre accord, le téléchargement est vérifié et l’installation s’effectue à la fermeture du jeu."
+          ]
+        }
+      ]
+    },
+    {
       "version": "1.44.0-beta.1",
       "github": true,
       "date": "2026-10-20",
