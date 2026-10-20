@@ -1,0 +1,57 @@
+name: Publish downloads and website
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check public content
+        run: |
+          test -f docs/documentation.html
+          test -f docs/downloads.json
+          test -z "$(find . -path './.git' -prune -o -name '*.java' -print -o -name '*sources.jar' -print)"
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          FILE="minerite-companion-$VERSION+26.2.jar"
+          test -f "docs/downloads/$FILE"
+          test -f "release-notes/$VERSION.md"
+          cd docs/downloads
+          sha256sum "$FILE" > "$RUNNER_TEMP/SHA256SUMS.txt"
+          if ! gh release view "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            if [[ "$VERSION" == *-* ]]; then
+              gh release create "$GITHUB_REF_NAME" "$FILE" "$RUNNER_TEMP/SHA256SUMS.txt" --repo "$GITHUB_REPOSITORY" --verify-tag --title "Minerite Companion $VERSION · Bêta" --notes-file "../../release-notes/$VERSION.md" --prerelease
+            else
+              gh release create "$GITHUB_REF_NAME" "$FILE" "$RUNNER_TEMP/SHA256SUMS.txt" --repo "$GITHUB_REPOSITORY" --verify-tag --title "Minerite Companion $VERSION · Stable" --notes-file "../../release-notes/$VERSION.md" --latest
+            fi
+          fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+  pages:
+    needs: publish
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
