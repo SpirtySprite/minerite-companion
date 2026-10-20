@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "releases": [
+    {
+      "version": "1.43.0-beta.3",
+      "channel": "beta",
+      "date": "2026-10-20",
+      "filename": "minerite-companion-1.43.0-beta.3+26.2.jar",
+      "url": "downloads/minerite-companion-1.43.0-beta.3+26.2.jar",
+      "size": 7887499,
+      "sha256": "04afa79364e885e5817a19051b811f466f9c4b42a5e31094274f10431350aee1"
+    },
+    {
+      "version": "1.43.0-beta.2",
+      "channel": "beta",
+      "date": "2026-10-20",
+      "filename": "minerite-companion-1.43.0-beta.2+26.2.jar",
+      "url": "downloads/minerite-companion-1.43.0-beta.2+26.2.jar",
+      "size": 7886254,
+      "sha256": "68a52a04ed264f42f2834493edb277a7710ef86a8696d39b7094949806074ad7"
+    },
+    {
+      "version": "1.43.0-beta.1",
+      "channel": "beta",
+      "date": "2026-10-20",
+      "filename": "minerite-companion-1.43.0-beta.1+26.2.jar",
+      "url": "downloads/minerite-companion-1.43.0-beta.1+26.2.jar",
+      "size": 7886023,
+      "sha256": "e7c6c943eb1d6ae8b117b77c74e63ce8b1d5e37ce936a23592caef2f67f19caa"
+    },
+    {
+      "version": "1.42.1",
+      "channel": "stable",
+      "date": "2026-10-20",
+      "filename": "minerite-companion-1.42.1+26.2.jar",
+      "url": "downloads/minerite-companion-1.42.1+26.2.jar",
+      "size": 7873816,
+      "sha256": "6afa6b1328eb9d3a57067f5ae2478578636b38c166b54d24d0297fe6b75eaf07"
+    },
+    {
+      "version": "1.42.0",
+      "channel": "stable",
+      "date": "2026-10-20",
+      "filename": "minerite-companion-1.42.0+26.2.jar",
+      "url": "downloads/minerite-companion-1.42.0+26.2.jar",
+      "size": 7869212,
+      "sha256": "15003d9b08ed3203102bdeec5bd449f560684d5f3ce042071cc85aea225b732d"
+    },
+    {
+      "version": "1.42.0-beta.3",
+      "channel": "beta",
+      "date": "2026-10-20",
+      "filename": "minerite-companion-1.42.0-beta.3+26.2.jar",
+      "url": "downloads/minerite-companion-1.42.0-beta.3+26.2.jar",
+      "size": 7863037,
+      "sha256": "0eb174757833515c3721a6add8126266adae30e8ae4bdc05ba7432b5d311d37d"
+    },
+    {
+      "version": "1.42.0-beta.2",
+      "channel": "beta",
+      "date": "2026-10-20",
+      "filename": "minerite-companion-1.42.0-beta.2+26.2.jar",
+      "url": "downloads/minerite-companion-1.42.0-beta.2+26.2.jar",
+      "size": 7849619,
+      "sha256": "a38dff03283d3362de9b40dc95bd9c2e05679ba0fa8eb6b0e7c77b357d468ccd"
+    },
+    {
+      "version": "1.42.0-beta.1",
+      "channel": "beta",
+      "date": "2026-10-20",
+      "filename": "minerite-companion-1.42.0-beta.1+26.2.jar",
+      "url": "downloads/minerite-companion-1.42.0-beta.1+26.2.jar",
+      "size": 7845962,
+      "sha256": "562bb20c65af8c1a33a8a476284e6fbf4031a3448c9ee6ab7e545d6d1e81c04a"
+    },
+    {
+      "version": "1.41.0-rc.1",
+      "channel": "beta",
+      "date": "2026-10-20",
+      "filename": "minerite-companion-1.41.0-rc.1+26.2.jar",
+      "url": "downloads/minerite-companion-1.41.0-rc.1+26.2.jar",
+      "size": 7827455,
+      "sha256": "436b504c53aed30d0677e588b978c304928c18553bb397495e7facbd5d46a781"
+    }
+  ]
+}

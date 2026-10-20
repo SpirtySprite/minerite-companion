@@ -1,0 +1,82 @@
+name: Module controls
+on:
+  workflow_dispatch:
+    inputs:
+      module:
+        description: Module
+        type: choice
+        required: true
+        options: [session, objectives, crafting, alerts, counters, fps, coordinates, inventory, playerstatus, nameplates, studio, textures, cosmetics, rarity, overlay, crosshair, zoom, chat, inventoryStyle, hotbar, tab, servermenus, frontmenus, wheel, angles, auto]
+      action:
+        description: Action
+        type: choice
+        required: true
+        options: [disable, enable]
+      reason:
+        description: Reason shown in the mod (required to disable)
+        type: string
+        default: Maintenance temporaire
+      minimum:
+        description: First affected version (empty = all)
+        type: string
+      maximum:
+        description: Last affected version (empty = all)
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: module-policy
+  cancel-in-progress: false
+jobs:
+  policy:
+    if: github.actor_id == github.repository_owner_id && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Update policy
+        env:
+          MODULE: ${{ inputs.module }}
+          ACTION: ${{ inputs.action }}
+          REASON: ${{ inputs.reason }}
+          MINIMUM: ${{ inputs.minimum }}
+          MAXIMUM: ${{ inputs.maximum }}
+        run: |
+          node <<'JS'
+          const fs = require('node:fs');
+          const {MODULE, ACTION, REASON, MINIMUM, MAXIMUM} = process.env;
+          const ids = ['session','objectives','crafting','alerts','counters','fps','coordinates','inventory','playerstatus','nameplates','studio','textures','cosmetics','rarity','overlay','crosshair','zoom','chat','inventoryStyle','hotbar','tab','servermenus','frontmenus','wheel','angles','auto'];
+          const version = /^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-[0-9A-Za-z]+([.-][0-9A-Za-z]+)*)?$/;
+          if (!ids.includes(MODULE) || !['enable','disable'].includes(ACTION)) throw Error('Invalid action');
+          if ((MINIMUM && !version.test(MINIMUM)) || (MAXIMUM && !version.test(MAXIMUM))) throw Error('Invalid version');
+          const compare = (a,b) => {
+            const [an,ap] = a.split('-'), [bn,bp] = b.split('-');
+            const aa=an.split('.').map(BigInt), bb=bn.split('.').map(BigInt);
+            for(let i=0;i<3;i++) if(aa[i]!==bb[i]) return aa[i]>bb[i]?1:-1;
+            if(ap===undefined || bp===undefined) return ap===bp?0:ap===undefined?1:-1;
+            const ar=ap.split('.'), br=bp.split('.');
+            for(let i=0;i<Math.min(ar.length,br.length);i++) {
+              const x=ar[i],y=br[i],xn=/^[0-9]+$/.test(x),yn=/^[0-9]+$/.test(y);
+              if(x===y) continue;
+              if(xn&&yn) {if(BigInt(x)!==BigInt(y))return BigInt(x)>BigInt(y)?1:-1;}
+              else return xn!==yn?(xn?-1:1):(x>y?1:-1);
+            }
+            return Math.sign(ar.length-br.length);
+          };
+          if(MINIMUM && MAXIMUM && compare(MINIMUM,MAXIMUM)>0) throw Error('Reversed version range');
+          const reason = REASON.trim();
+          if (ACTION === 'disable' && (!reason || reason.length > 240 || /[\x00-\x1f\x7f]/.test(reason))) throw Error('Invalid reason');
+          const file = 'docs/module-policy.json';
+          const policy = JSON.parse(fs.readFileSync(file, 'utf8'));
+          if (ACTION === 'disable') policy.disabled[MODULE] = {reason, minimum: MINIMUM, maximum: MAXIMUM};
+          else delete policy.disabled[MODULE];
+          fs.writeFileSync(file, JSON.stringify(policy, null, 2) + '\n');
+          JS
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add docs/module-policy.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update remote module policy"
+            git push origin HEAD:main
+          fi
