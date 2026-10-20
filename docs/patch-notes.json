@@ -2,6 +2,31 @@
   "schema": 1,
   "releases": [
     {
+      "version": "1.44.0-beta.1",
+      "github": true,
+      "date": "2026-10-20",
+      "channel": "beta",
+      "title": "Premiers pas et téléchargements sur le site",
+      "summary": "Un assistant accompagne les nouvelles installations pour choisir leur thème, leur HUD et leurs modules. Le site propose les téléchargements directement et le code du client est désormais conservé dans un dépôt distinct.",
+      "sections": [
+        {
+          "title": "Assistant de configuration",
+          "items": [
+            "Au premier lancement : choisissez un thème, comparez trois présentations du HUD et sélectionnez vos modules. Les réglages restent modifiables ensuite.",
+            "Les installations existantes conservent leurs réglages. L’assistant peut être rouvert dans Réglages → Thème et couleurs → Assistant de configuration.",
+            "Les profils proposés privilégient les outils de confort. Le minage automatique reste désactivé à la fin de la configuration."
+          ]
+        },
+        {
+          "title": "Téléchargements et mises à jour",
+          "items": [
+            "Une page dédiée permet de télécharger les JAR stables et bêta directement depuis le site, de lire leurs notes et de vérifier leur empreinte SHA-256.",
+            "La documentation et les fichiers distribués sont séparés du code du client. Les adresses historiques de mise à jour, de notes et de contrôle des modules restent compatibles."
+          ]
+        }
+      ]
+    },
+    {
       "version": "1.43.0-beta.3",
       "github": true,
       "date": "2026-10-20",

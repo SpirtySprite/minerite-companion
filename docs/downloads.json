@@ -2,6 +2,15 @@
   "schema": 1,
   "releases": [
     {
+      "version": "1.44.0-beta.1",
+      "channel": "beta",
+      "date": "2026-10-20",
+      "filename": "minerite-companion-1.44.0-beta.1+26.2.jar",
+      "url": "downloads/minerite-companion-1.44.0-beta.1+26.2.jar",
+      "size": 7896734,
+      "sha256": "aef4b2cf7ada58734151b9fc0a941b407913f8a96663a5d3445d480e4d642220"
+    },
+    {
       "version": "1.43.0-beta.3",
       "channel": "beta",
       "date": "2026-10-20",
