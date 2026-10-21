@@ -2,6 +2,25 @@
   "schema": 1,
   "releases": [
     {
+      "version": "1.46.0-major-beta.2",
+      "github": false,
+      "date": "2026-10-21",
+      "channel": "beta",
+      "title": "API Java — modules indépendants et dispositions HUD",
+      "summary": "Précision du contrat des extensions Java et ajout de dispositions visuelles temporaires pour le HUD.",
+      "sections": [
+        {
+          "title": "Personnalisation et propriété des modules",
+          "items": [
+            "Les modules Java possèdent un identifiant lié à leur extension : un nom identique à un module intégré ne le remplace pas.",
+            "L’API publique ne fournit aucun contrôle des modules intégrés ni des modules d’une autre extension.",
+            "Les thèmes et les dispositions HUD restent personnalisables ; les dispositions d’extension sont retirées à la désactivation sans modifier les réglages personnels.",
+            "SDK et projet de départ mis à jour, avec documentation du contrat de publication et de ses limites pour du code Java natif."
+          ]
+        }
+      ]
+    },
+    {
       "version": "1.46.0-major-beta.1",
       "github": false,
       "date": "2026-10-21",

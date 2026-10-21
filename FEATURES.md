@@ -111,3 +111,6 @@ API pour les événements, minuteries, touches, données client, commandes décl
 
 
 API Java native : SDK indépendant des sources privées, projet Gradle autonome et guide https://plugins.voidwake.fr/minerite-companion/java-api. Modules, réglages, événements, HUD natif, écrans et services UI du Companion, avec accès direct à Minecraft et Fabric. Installation manuelle des JAR avec redémarrage dans cette préversion ; le catalogue à installation immédiate reste réservé à Lua. Les callbacks gérés respectent la désactivation, les mixins et événements Fabric indépendants doivent la gérer eux-mêmes.
+
+
+Contrat Java : chaque extension contrôle ses propres modules. Les thèmes et dispositions HUD sont personnalisables via des remplacements visuels temporaires, sans modifier le fonctionnement des modules intégrés ni écraser la disposition personnelle. Les sources des extensions proposées doivent respecter ce périmètre ; Java natif ne constitue pas un bac à sable.
