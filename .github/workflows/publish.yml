@@ -28,12 +28,13 @@ jobs:
           test -f "docs/downloads/$FILE"
           test -f "release-notes/$VERSION.md"
           cd docs/downloads
-          sha256sum "$FILE" > "$RUNNER_TEMP/SHA256SUMS.txt"
+          FILES=(minerite-companion-"$VERSION"+26.*.jar)
+          sha256sum "${FILES[@]}" > "$RUNNER_TEMP/SHA256SUMS.txt"
           if ! gh release view "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
             if [[ "$VERSION" == *-* ]]; then
-              gh release create "$GITHUB_REF_NAME" "$FILE" "$RUNNER_TEMP/SHA256SUMS.txt" --repo "$GITHUB_REPOSITORY" --verify-tag --title "Minerite Companion $VERSION · Bêta" --notes-file "../../release-notes/$VERSION.md" --prerelease
+              gh release create "$GITHUB_REF_NAME" "${FILES[@]}" "$RUNNER_TEMP/SHA256SUMS.txt" --repo "$GITHUB_REPOSITORY" --verify-tag --title "Minerite Companion $VERSION · Bêta" --notes-file "../../release-notes/$VERSION.md" --prerelease
             else
-              gh release create "$GITHUB_REF_NAME" "$FILE" "$RUNNER_TEMP/SHA256SUMS.txt" --repo "$GITHUB_REPOSITORY" --verify-tag --title "Minerite Companion $VERSION · Stable" --notes-file "../../release-notes/$VERSION.md" --latest
+              gh release create "$GITHUB_REF_NAME" "${FILES[@]}" "$RUNNER_TEMP/SHA256SUMS.txt" --repo "$GITHUB_REPOSITORY" --verify-tag --title "Minerite Companion $VERSION · Stable" --notes-file "../../release-notes/$VERSION.md" --latest
             fi
           fi
       - uses: actions/configure-pages@v5
