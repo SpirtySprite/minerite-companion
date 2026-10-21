@@ -1,7 +1,7 @@
 const stableDownload = fetch('downloads.json', { cache: 'no-cache' }).then(response => {
   if (!response.ok) throw new Error('Downloads unavailable');
   return response.json();
-}).then(data => data.releases.find(release => release.channel === 'stable' && /^downloads\/minerite-companion-[0-9A-Za-z.+-]+\.jar$/.test(release.url))).catch(() => null);
+}).then(data => data.releases.filter(release => release.channel === 'stable' && /^downloads\/minerite-companion-[0-9A-Za-z.+-]+\.jar$/.test(release.url))).catch(() => []);
 const guideNav = document.querySelector('#guide-nav');
 const guideContent = document.querySelector('#guide-content');
 const guideSearch = document.querySelector('#guide-search');
@@ -27,7 +27,17 @@ function renderGuide() {
   if (!guide) { guideContent.append(element('h2', '', 'Ce guide est introuvable.'), element('p', 'guide-lead', 'Choisissez une rubrique dans la navigation.')); return; }
   document.title = `${guide.title} · Documentation Minerite Companion`;
   guideContent.append(element('p', 'guide-kicker', `${guide.category} · Version 1.42.0`), element('h2', '', guide.title), element('p', 'guide-lead', guide.summary));
-  if (guide.id === 'installation') { const download = element('a', 'start-link', 'Télécharger la dernière version stable →'); download.href = 'downloads.html'; guideContent.append(download); stableDownload.then(release => { if (release) { download.href = release.url; download.download = release.filename; download.setAttribute('aria-label', `Télécharger la dernière version stable : ${release.version}`); } }); }
+  if (guide.id === 'installation') {
+    const actions = element('div', 'release-actions'); const download = element('a', 'start-link', 'Télécharger la dernière version stable →'); download.href = 'downloads.html'; actions.append(download); guideContent.append(actions);
+    stableDownload.then(releases => {
+      if (!releases.length) return;
+      actions.replaceChildren();
+      for (const minecraft of ['26.2', '26.3']) {
+        const release = releases.find(file => (file.minecraft || '26.2') === minecraft); if (!release) continue;
+        const link = element('a', 'start-link', `Télécharger pour Minecraft ${minecraft} ↓`); link.href = release.url; link.download = release.filename; link.setAttribute('aria-label', `Télécharger la dernière version stable ${release.version} pour Minecraft ${minecraft}`); actions.append(link);
+      }
+    });
+  }
   const gallery = element('div', 'guide-gallery');
   for (const capture of guide.images) { const figure = element('figure', 'guide-figure'); const button = element('button'); button.type = 'button'; button.setAttribute('aria-label', `Agrandir : ${capture.caption}`); const img = element('img'); img.src = `images/${capture.file}.webp`; img.alt = capture.caption; img.width = 1920; img.height = 1080; img.loading = 'lazy'; img.decoding = 'async'; button.append(img); button.addEventListener('click', () => openImage(img.src, capture.caption)); figure.append(button, element('figcaption', '', `${capture.caption} · Capture en jeu, version 1.42.0. Cliquez pour agrandir.`)); gallery.append(figure); }
   if (guide.images.length) guideContent.append(gallery);

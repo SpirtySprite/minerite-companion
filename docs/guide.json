@@ -6,16 +6,16 @@
       "id": "installation",
       "title": "Installation et premiers pas",
       "category": "Bien démarrer",
-      "summary": "Prérequis : Minecraft Java 26.2, Java 25, Fabric Loader 0.19.0 ou plus récent et Fabric API pour Minecraft 26.2. Le mod s’installe uniquement côté client.",
+      "summary": "Prérequis : Minecraft Java 26.2 ou 26.3, Java 25, Fabric Loader 0.19.5 ou plus récent et Fabric API pour votre version de Minecraft. Le mod s’installe uniquement côté client.",
       "steps": [
-        "Installez une instance Fabric pour Minecraft 26.2 avec Java 25 et Fabric API.",
+        "Installez une instance Fabric pour Minecraft 26.2 ou 26.3 avec Java 25 et la bonne version de Fabric API.",
         "Placez le JAR du Companion dans mods et conservez une seule version du mod.",
         "Au premier lancement, choisissez votre thème, une présentation du HUD et vos modules dans l’assistant. Une installation existante conserve ses réglages.",
         "Lancez Minecraft et ouvrez les modules avec Maj droite, ou depuis le menu principal.",
         "Activez les outils souhaités puis ouvrez Modifier le HUD."
       ],
       "details": [
-        "Prérequis : Minecraft Java 26.2, Java 25, Fabric Loader 0.19.0 ou plus récent et Fabric API pour Minecraft 26.2. Le mod s’installe uniquement côté client.",
+        "Prérequis : Minecraft Java 26.2 ou 26.3, Java 25, Fabric Loader 0.19.5 ou plus récent et Fabric API pour votre version de Minecraft. Le mod s’installe uniquement côté client.",
         "Téléchargez le JAR depuis le lien de téléchargement de cette page et placez-le dans le dossier mods de votre instance Fabric. Retirez l’ancien JAR du Companion si vous en avez déjà un, puis lancez le jeu.",
         "En jeu, Maj droite ouvre les modules. Utilisez la recherche ou les catégories pour trouver un outil : son interrupteur l’active, sa carte donne accès à ses réglages. Le Companion est aussi accessible depuis les menus d’accueil et de pause.",
         "Commencez par choisir votre thème, puis ouvrez Modifier le HUD pour placer les panneaux. Tous les raccourcis peuvent être changés dans les réglages ; une configuration existante est conservée.",

@@ -2,7 +2,28 @@
   "schema": 1,
   "releases": [
     {
+      "version": "1.45.0",
+      "minecraft": "26.2",
+      "channel": "stable",
+      "date": "2026-10-21",
+      "filename": "minerite-companion-1.45.0+26.2.jar",
+      "url": "downloads/minerite-companion-1.45.0+26.2.jar",
+      "size": 7901079,
+      "sha256": "f35dabca11aa8ef323420a374fdf2db3dc50a900c8a3a4e64c82c91f44aca428"
+    },
+    {
+      "version": "1.45.0",
+      "minecraft": "26.3",
+      "channel": "stable",
+      "date": "2026-10-21",
+      "filename": "minerite-companion-1.45.0+26.3.jar",
+      "url": "downloads/minerite-companion-1.45.0+26.3.jar",
+      "size": 1951480,
+      "sha256": "84cee8fcdcaf9cd487e7db509e86570d28cafb07d73113e8a10e86b5647fa25c"
+    },
+    {
       "version": "1.44.0",
+      "minecraft": "26.2",
       "channel": "stable",
       "date": "2026-10-20",
       "filename": "minerite-companion-1.44.0+26.2.jar",
@@ -12,6 +33,7 @@
     },
     {
       "version": "1.44.0-beta.1",
+      "minecraft": "26.2",
       "channel": "beta",
       "date": "2026-10-20",
       "filename": "minerite-companion-1.44.0-beta.1+26.2.jar",
@@ -21,6 +43,7 @@
     },
     {
       "version": "1.43.0-beta.3",
+      "minecraft": "26.2",
       "channel": "beta",
       "date": "2026-10-20",
       "filename": "minerite-companion-1.43.0-beta.3+26.2.jar",
@@ -30,6 +53,7 @@
     },
     {
       "version": "1.43.0-beta.2",
+      "minecraft": "26.2",
       "channel": "beta",
       "date": "2026-10-20",
       "filename": "minerite-companion-1.43.0-beta.2+26.2.jar",
@@ -39,6 +63,7 @@
     },
     {
       "version": "1.43.0-beta.1",
+      "minecraft": "26.2",
       "channel": "beta",
       "date": "2026-10-20",
       "filename": "minerite-companion-1.43.0-beta.1+26.2.jar",
@@ -48,6 +73,7 @@
     },
     {
       "version": "1.42.1",
+      "minecraft": "26.2",
       "channel": "stable",
       "date": "2026-10-20",
       "filename": "minerite-companion-1.42.1+26.2.jar",
@@ -57,6 +83,7 @@
     },
     {
       "version": "1.42.0",
+      "minecraft": "26.2",
       "channel": "stable",
       "date": "2026-10-20",
       "filename": "minerite-companion-1.42.0+26.2.jar",
@@ -66,6 +93,7 @@
     },
     {
       "version": "1.42.0-beta.3",
+      "minecraft": "26.2",
       "channel": "beta",
       "date": "2026-10-20",
       "filename": "minerite-companion-1.42.0-beta.3+26.2.jar",
@@ -75,6 +103,7 @@
     },
     {
       "version": "1.42.0-beta.2",
+      "minecraft": "26.2",
       "channel": "beta",
       "date": "2026-10-20",
       "filename": "minerite-companion-1.42.0-beta.2+26.2.jar",
@@ -84,6 +113,7 @@
     },
     {
       "version": "1.42.0-beta.1",
+      "minecraft": "26.2",
       "channel": "beta",
       "date": "2026-10-20",
       "filename": "minerite-companion-1.42.0-beta.1+26.2.jar",
@@ -93,6 +123,7 @@
     },
     {
       "version": "1.41.0-rc.1",
+      "minecraft": "26.2",
       "channel": "beta",
       "date": "2026-10-20",
       "filename": "minerite-companion-1.41.0-rc.1+26.2.jar",

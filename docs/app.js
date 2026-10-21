@@ -22,9 +22,8 @@ function render() {
   const meta = node('div', 'release-meta'); meta.append(node('span', 'version-number', `Version ${release.version}`), badge(release), node('time', '', date(release.date))); meta.lastChild.dateTime = release.date;
   article.append(meta, node('h2', '', release.title), node('p', 'release-summary', release.summary));
   const actions = node('div', 'release-actions');
-  const file = state.downloads.find(file => file.version === release.version);
-  if (file) {
-    const download = node('a', 'start-link', `Télécharger la version ${release.version} ↓`);
+  for (const file of state.downloads.filter(file => file.version === release.version)) {
+    const download = node('a', 'start-link', `Télécharger pour Minecraft ${file.minecraft || '26.2'} ↓`);
     download.href = file.url; download.download = file.filename; actions.append(download);
   }
   const copy = node('button', 'copy-link', 'Copier le lien'); copy.type = 'button'; copy.addEventListener('click', async () => { try { await navigator.clipboard.writeText(`${location.origin}${location.pathname}#${encodeURIComponent(release.version)}`); copy.textContent = 'Lien copié ✓'; } catch { copy.textContent = 'Copiez l’adresse de cette page'; } setTimeout(() => { copy.textContent = 'Copier le lien'; }, 2200); }); actions.append(copy); article.append(actions);
