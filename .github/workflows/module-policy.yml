@@ -6,7 +6,7 @@ on:
         description: Module
         type: choice
         required: true
-        options: [session, objectives, crafting, alerts, counters, fps, coordinates, inventory, playerstatus, nameplates, studio, textures, cosmetics, rarity, overlay, crosshair, zoom, chat, inventoryStyle, hotbar, tab, servermenus, frontmenus, wheel, angles, auto]
+        options: [addons, session, objectives, crafting, alerts, counters, fps, coordinates, inventory, playerstatus, nameplates, studio, textures, cosmetics, rarity, overlay, crosshair, zoom, chat, inventoryStyle, hotbar, tab, servermenus, frontmenus, wheel, angles, auto]
       action:
         description: Action
         type: choice
@@ -46,11 +46,13 @@ jobs:
           node <<'JS'
           const fs = require('node:fs');
           const {MODULE, ACTION, REASON, MINIMUM, MAXIMUM} = process.env;
-          const ids = ['session','objectives','crafting','alerts','counters','fps','coordinates','inventory','playerstatus','nameplates','studio','textures','cosmetics','rarity','overlay','crosshair','zoom','chat','inventoryStyle','hotbar','tab','servermenus','frontmenus','wheel','angles','auto'];
+          const ids = ['addons','session','objectives','crafting','alerts','counters','fps','coordinates','inventory','playerstatus','nameplates','studio','textures','cosmetics','rarity','overlay','crosshair','zoom','chat','inventoryStyle','hotbar','tab','servermenus','frontmenus','wheel','angles','auto'];
           const version = /^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-[0-9A-Za-z]+([.-][0-9A-Za-z]+)*)?$/;
           if (!ids.includes(MODULE) || !['enable','disable'].includes(ACTION)) throw Error('Invalid action');
           if ((MINIMUM && !version.test(MINIMUM)) || (MAXIMUM && !version.test(MAXIMUM))) throw Error('Invalid version');
           const compare = (a,b) => {
+            a=a.replace(/-(minor|major)-stable$/, '').replace(/-(minor|major)-beta\./, '-beta.');
+            b=b.replace(/-(minor|major)-stable$/, '').replace(/-(minor|major)-beta\./, '-beta.');
             const [an,ap] = a.split('-'), [bn,bp] = b.split('-');
             const aa=an.split('.').map(BigInt), bb=bn.split('.').map(BigInt);
             for(let i=0;i<3;i++) if(aa[i]!==bb[i]) return aa[i]>bb[i]?1:-1;
