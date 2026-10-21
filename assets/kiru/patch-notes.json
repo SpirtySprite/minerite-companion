@@ -2,6 +2,50 @@
   "schema": 1,
   "releases": [
     {
+      "version": "1.46.0-major-beta.1",
+      "github": false,
+      "date": "2026-10-21",
+      "channel": "beta",
+      "title": "Extensions Lua et Java — API développeur v1",
+      "summary": "Préversion du système d’extensions : Lua rechargeable à chaud, modules Java natifs avec redémarrage, SDK public et catalogue Lua approuvé.",
+      "sections": [
+        {
+          "title": "Extensions et catalogue",
+          "items": [
+            "Installation, activation, désactivation, rechargement et suppression d’extensions sans redémarrer Minecraft.",
+            "Catalogue compatible avec la version du jeu, fiche des permissions, vérification SHA-256 et révocation par version.",
+            "En cas d’erreur au chargement d’une mise à jour, restauration de l’extension précédente."
+          ]
+        },
+        {
+          "title": "API développeur v1",
+          "items": [
+            "Modules, réglages persistants, stockage local, événements, minuteries et raccourcis clavier.",
+            "HUD personnalisés, écrans avec les composants du Companion et préréglages de thèmes et de dispositions.",
+            "Données client : joueur, inventaire, session de minage et compteurs reçus du serveur ; accès explicites par permission.",
+            "Projets locaux rechargeables en mode développeur, documentation française et exemple Carnet de session."
+          ]
+        },
+        {
+          "title": "API Java native",
+          "items": [
+            "SDK public séparé des sources privées, projet Gradle autonome et guide en français pour Minecraft 26.2 et 26.3.",
+            "Modules intégrés au hub, réglages persistants, événements, minuteries, raccourcis, HUD natif et écrans Minecraft ou Companion.",
+            "Accès aux API Minecraft et Fabric, aux ressources et aux mixins ; installation manuelle dans mods/ avec redémarrage dans cette préversion.",
+            "Arrêt des callbacks gérés lors de la désactivation et isolement des erreurs par module ; le code Fabric indépendant reste sous la responsabilité de l’extension."
+          ]
+        },
+        {
+          "title": "Cadre de cette bêta",
+          "items": [
+            "Le moteur Lua restreint les bibliothèques accessibles et interrompt les callbacks dépassant leur budget ; une revue des sources reste nécessaire avant publication.",
+            "Les archives Lua ne chargent pas de code Java. Les extensions Java utilisent un JAR Fabric séparé, sans bac à sable et avec redémarrage.",
+            "Nouvelle convention de version : numéro, type minor/major et canal stable/beta.N."
+          ]
+        }
+      ]
+    },
+    {
       "version": "1.45.0",
       "github": true,
       "date": "2026-10-21",

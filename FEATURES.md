@@ -101,3 +101,13 @@ Minerite Companion est un mod client communautaire qui rassemble les outils de m
 - À petite résolution, des panneaux HUD déjà placés peuvent se chevaucher : ajustez leur taille et leur position dans l’éditeur. Des avertissements liés à un ancien pack local et à des signatures de textures Cosmetica ont été observés ; le détail de la validation figure dans RELEASE_READINESS.md.
 
 [Journal des versions](https://spirtysprite.github.io/minerite-companion/) · Minecraft 26.2 · Fabric · Java 25
+
+
+## Extensions — prochaine version majeure, API v1 en bêta
+
+Catalogue d’extensions Lua approuvées avec recherche, catégories, permissions et vérification SHA-256. Installation, mises à jour, activation, désactivation et rechargement sans redémarrage. Les modules d’extension apparaissent dans le hub du Companion et disposent de leurs propres réglages.
+
+API pour les événements, minuteries, touches, données client, commandes déclarées, HUD, écrans structurés, préréglages d’apparence et stockage local. Projets locaux rechargeables en mode développeur ; exemple et documentation : https://plugins.voidwake.fr/minerite-companion/developers. Les bibliothèques Java et les mixins ne sont pas pris en charge par ces extensions à chaud. Cette fonctionnalité n’est pas incluse dans la stable 1.45.0.
+
+
+API Java native : SDK indépendant des sources privées, projet Gradle autonome et guide https://plugins.voidwake.fr/minerite-companion/java-api. Modules, réglages, événements, HUD natif, écrans et services UI du Companion, avec accès direct à Minecraft et Fabric. Installation manuelle des JAR avec redémarrage dans cette préversion ; le catalogue à installation immédiate reste réservé à Lua. Les callbacks gérés respectent la désactivation, les mixins et événements Fabric indépendants doivent la gérer eux-mêmes.
