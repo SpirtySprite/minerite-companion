@@ -26,7 +26,7 @@
       "github": false,
       "date": "2026-10-21",
       "channel": "beta",
-      "title": "API Java — modules indépendants et dispositions HUD",
+      "title": "API Java · modules indépendants et dispositions HUD",
       "summary": "Précision du contrat des extensions Java et ajout de dispositions visuelles temporaires pour le HUD.",
       "sections": [
         {
@@ -45,7 +45,7 @@
       "github": false,
       "date": "2026-10-21",
       "channel": "beta",
-      "title": "Extensions Lua et Java — API développeur v1",
+      "title": "Extensions Lua et Java · API développeur v1",
       "summary": "Préversion du système d’extensions : Lua rechargeable à chaud, modules Java natifs avec redémarrage, SDK public et catalogue Lua approuvé.",
       "sections": [
         {
@@ -266,7 +266,7 @@
       "github": true,
       "date": "2026-10-20",
       "channel": "stable",
-      "title": "Minerite Companion — première version stable",
+      "title": "Minerite Companion · première version stable",
       "summary": "Minerite Companion est un mod client communautaire qui rassemble les outils de minage, les recettes et les informations de Minerite dans une interface personnalisable. Cette première version stable présente l’ensemble des fonctionnalités disponibles : 26 modules, des menus du serveur repensés, un wiki intégré et des outils pour adapter votre affichage à votre façon de jouer.",
       "sections": [
         {"title": "Installation et premiers pas", "items": [

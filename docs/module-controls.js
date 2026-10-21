@@ -10,7 +10,7 @@ fetch('https://raw.githubusercontent.com/SpirtySprite/minerite-companion/main/do
     for (const [id, rule] of entries) {
       const item = document.createElement('li');
       const range = rule.minimum || rule.maximum ? `Versions : ${rule.minimum || 'sans limite basse'} → ${rule.maximum || 'sans limite haute'}` : 'Toutes les versions compatibles';
-      item.textContent = `${names[id] || id} — ${rule.reason} (${range})`;
+      item.textContent = `${names[id] || id} · ${rule.reason} (${range})`;
       list.append(item);
     }
   })

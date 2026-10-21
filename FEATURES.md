@@ -1,4 +1,4 @@
-# Minerite Companion — première version stable
+# Minerite Companion · première version stable
 
 **1.42.0 · Stable · 2026-10-20**
 
@@ -103,7 +103,7 @@ Minerite Companion est un mod client communautaire qui rassemble les outils de m
 [Journal des versions](https://spirtysprite.github.io/minerite-companion/) · Minecraft 26.2 · Fabric · Java 25
 
 
-## Extensions — prochaine version majeure, API v1 en bêta
+## Extensions · prochaine version majeure, API v1 en bêta
 
 Catalogue d’extensions Lua approuvées avec recherche, catégories, permissions et vérification SHA-256. Installation, mises à jour, activation, désactivation et rechargement sans redémarrage. Les modules d’extension apparaissent dans le hub du Companion et disposent de leurs propres réglages.
 
