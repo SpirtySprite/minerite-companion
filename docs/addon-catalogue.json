@@ -1,0 +1,31 @@
+{
+    "schema": 1,
+    "addons": [
+        {
+            "manifest": {
+                "api": 1,
+                "id": "session-notebook",
+                "name": "Carnet de session",
+                "author": "Minerite Companion",
+                "version": "1.0.0",
+                "description": "Un HUD d\u00e9pla\u00e7able par r\u00e9glages, un objectif de blocs et un carnet consultable avec K.",
+                "minecraft": [
+                    "26.2",
+                    "26.3"
+                ],
+                "permissions": [
+                    "session",
+                    "hud",
+                    "screens",
+                    "keys"
+                ]
+            },
+            "file": "addons/session-notebook-1.0.0.zip",
+            "size": 1260,
+            "sha256": "e55c6a1539e13fd2fa4d80fc1f407a50d535d4fa6ff94fed7e6f06ba23897c7c"
+        }
+    ],
+    "revoked": {
+        
+    }
+}

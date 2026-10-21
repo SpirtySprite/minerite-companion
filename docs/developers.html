@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Créer une extension · Minerite Companion</title><link rel="icon" href="minerite.png"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="documentation.css"><link rel="stylesheet" href="companion-theme.css"><link rel="stylesheet" href="developers.css"></head>
+<body>
+<header class="site-header"><a class="brand" href="documentation"><img src="minerite.png" alt="" width="40" height="40"><span class="brand-copy"><strong>Minerite Companion</strong><small>Projet communautaire · Non officiel</small></span></a><nav aria-label="Navigation principale"><a href="documentation">Le guide</a><a href="./">Les versions</a><a href="developers" aria-current="page">Développer</a><a class="download" href="downloads">Télécharger ↓</a></nav></header>
+<main><section class="hero"><p class="eyebrow"><span></span> API COMPANION · VERSION 1 · EN PRÉPARATION</p><h1>Vos idées.<br>Vos modules.</h1><p class="intro">Créez des extensions en Lua : nouveaux comportements, HUD, écrans et préréglages visuels.<br>Installation, activation et rechargement sans redémarrer Minecraft.</p><p class="intro">Cette API sera disponible dans la prochaine version majeure. Elle n’est pas présente dans la version stable 1.45.0.</p></section>
+<div class="developer-content"><nav class="developer-nav" aria-label="Guide développeur"><a href="#demarrer">Premier module</a><a href="#reference">Référence API</a><a href="#donnees">Données</a><a href="#apparence">Apparence</a><a href="#publication">Publication</a><a href="#limites">Limites</a></nav>
+<section id="demarrer"><h2>Un premier module en quelques minutes</h2><p><a href="addons/session-notebook-1.0.0.zip" download>Télécharger le projet « Carnet de session » ↓</a> — un exemple complet avec HUD, réglages, stockage et écran ouvert avec K.</p><ol><li>Activez le <strong>mode développeur</strong> dans les réglages du Companion.</li><li>Décompressez les fichiers dans <code>config/minerite-companion/addons/development/session-notebook/</code>. Le dossier doit contenir directement <code>addon.json</code> et <code>main.lua</code>.</li><li>Ouvrez <strong>Extensions → Développer → Recharger les projets locaux</strong>.</li><li>Modifiez le script et rechargez les projets pour appliquer vos changements immédiatement.</li></ol><p>Les projets locaux ne sont pas approuvés. Ils s’arrêtent lorsque vous désactivez le mode développeur. Un identifiant déjà installé depuis le catalogue ne peut pas être remplacé par un projet local.</p>
+<h3>Le manifeste : addon.json</h3><pre><code>{
+  "api": 1,
+  "id": "mon-module",
+  "name": "Mon module",
+  "author": "Votre pseudo",
+  "version": "1.0.0",
+  "description": "Un module créé avec l’API Companion.",
+  "minecraft": ["26.2", "26.3"],
+  "permissions": ["session", "hud"]
+}</code></pre><h3>Le script : main.lua</h3><pre><code>local module = companion.module {
+    id = "compteur",
+    name = "Mon compteur de blocs"
+}
+
+module:setting {
+    id = "visible", name = "Afficher le compteur",
+    type = "boolean", default = true
+}
+
+local blocs = 0
+module:every(20, function()
+    blocs = companion.session().blocks or 0
+end)
+
+module:hud(function(draw)
+    if not module:get("visible") then return end
+    draw:panel(12, 180, 190, 36, "DD15171C")
+    draw:text(22, 193, "Blocs : " .. blocs, "E7B35A")
+end)</code></pre><p>Utilisez un identifiant différent dans le manifeste et le nom du dossier pour publier votre propre extension ; leurs valeurs doivent correspondre. Un identifiant de module est local à son extension. Les identifiants comportent 2 à 48 caractères : lettres minuscules, chiffres, tiret ou trait de soulignement, avec une lettre au début.</p></section>
+<section id="reference"><h2>Référence de l’API v1</h2><p>La syntaxe <code>companion.fonction()</code> appelle l’API générale. La syntaxe <code>module:methode()</code> appelle une méthode sur un module. Déclarez vos modules et leurs callbacks au chargement du script ; leur enregistrement est ensuite fermé.</p><div class="developer-table"><table><thead><tr><th>Fonction</th><th>Usage</th></tr></thead><tbody>
+<tr><td><code>companion.module{ id, name, description?, enabled? }</code></td><td>Crée un module ; actif par défaut. Le joueur peut désactiver l’extension entière ou chaque module séparément.</td></tr>
+<tr><td><code>module:setting{ id, name, help?, type, default, min?, max? }</code></td><td>Ajoute un réglage persistant : <code>boolean</code>, <code>number</code> ou <code>text</code>. Les nombres ont des bornes, 0 à 100 par défaut. Le texte est limité à 240 caractères.</td></tr>
+<tr><td><code>module:get("id")</code></td><td>Lit un réglage. Ses modifications sont accessibles immédiatement.</td></tr>
+<tr><td><code>module:store("cle", valeur)</code><br><code>module:store("cle")</code></td><td>Écrit ou lit une valeur locale persistante : texte, nombre, booléen ou nil. 64 clés par module. Aucun accès arbitraire aux fichiers.</td></tr>
+<tr><td><code>module:on("evenement", function(value) … end)</code></td><td>Événements : <code>enable</code>, <code>disable</code>, <code>tick</code>, <code>join</code>, <code>leave</code>, <code>chat</code>, <code>actionbar</code>, <code>inventory_changed</code>, <code>held_item_changed</code>, <code>session_changed</code>, <code>counters_changed</code>, <code>setting_changed</code>.</td></tr>
+<tr><td><code>module:every(ticks, callback)</code></td><td>Minuterie de 1 à 72 000 ticks client. Environ 20 ticks par seconde, selon les performances du jeu. Arrêtée avec le module.</td></tr>
+<tr><td><code>module:bind("key.keyboard.k", callback)</code></td><td>Callback au nouvel appui, uniquement en jeu lorsqu’aucun écran n’est ouvert. La touche ne remplace pas les raccourcis vanilla ; évitez les conflits.</td></tr>
+<tr><td><code>module:hud(function(draw) … end)</code></td><td>Dessine en jeu. <code>draw.width</code> et <code>draw.height</code> sont les dimensions de l’interface, pas les pixels physiques de l’écran.</td></tr>
+<tr><td><code>module:open(titre, function(ui) … end)</code></td><td>Ouvre un écran avec les composants et le défilement du Companion. Ajoutez <code>ui:label(texte, aide?)</code> et <code>ui:button(texte, callback)</code>. Le contenu est construit à l’ouverture.</td></tr>
+<tr><td><code>companion.notify(texte)</code></td><td>Affiche un message local identifié par le nom de l’extension.</td></tr>
+<tr><td><code>companion.command("spawn")</code></td><td>Envoie une commande au serveur, avec la permission <code>commands</code>. Limite globale d’une commande par seconde ; un dépassement met l’extension en erreur.</td></tr>
+<tr><td><code>companion.contains(texte, recherche)</code></td><td>Recherche littérale sans distinction de casse ; n’interprète pas les motifs Lua.</td></tr>
+<tr><td><code>companion.time()</code></td><td>Heure Unix en secondes. <code>companion.api_version</code> expose la version numérique de l’API.</td></tr>
+</tbody></table></div><h3>Dessiner sur le HUD</h3><pre><code>draw:text(x, y, texte, couleur?)
+draw:panel(x, y, largeur, hauteur, couleur?)
+draw:rect(x, y, largeur, hauteur, couleur?)
+draw:bar(x, y, largeur, hauteur, fraction, couleur?, fond?)
+draw:item(x, y, "minecraft:netherite_ingot")</code></pre><p>Les couleurs sont des textes hexadécimaux <code>RRGGBB</code> ou <code>AARRGGBB</code>. La progression d’une barre est comprise entre 0 et 1. Les icônes utilisent les objets et les ressources actifs de Minecraft. L’API v1 ne charge pas de modèle ou de police arbitraire depuis une archive.</p>
+<h3>Événements et cycle de vie</h3><p><code>tick</code> et les minuteries reçoivent le compteur de ticks de l’extension. <code>chat</code> et <code>actionbar</code> reçoivent un texte ; <code>setting_changed</code> reçoit l’identifiant du réglage. Les événements de données reçoivent le même instantané que les fonctions ci-dessous. Les changements d’inventaire, d’objet tenu, de session et de compteurs sont comparés toutes les dix ticks. <code>enable</code> et <code>disable</code> n’ont pas de charge utile.</p><p>À la désactivation : callbacks, minuteries, touches et HUD cessent de s’exécuter ; un écran appartenant à l’extension se ferme. Les réglages et le stockage sont conservés. Une erreur arrête l’extension et son diagnostic apparaît dans sa fiche.</p></section>
+<section id="donnees"><h2>Lire les données disponibles</h2><p>Les fonctions retournent des copies Lua des données observées par le client. Elles ne fournissent ni historique serveur caché ni accès à une API Minerite. Vérifiez toujours <code>available</code> avant d’utiliser un instantané hors jeu.</p><div class="developer-table"><table><thead><tr><th>Fonction / permission</th><th>Champs</th></tr></thead><tbody>
+<tr><td><code>companion.player()</code> · player</td><td><code>name, health, max_health, hunger, armour, level, xp_progress, x, y, z, yaw, pitch, fps, held_item</code></td></tr>
+<tr><td><code>companion.world()</code> · player</td><td><code>server, singleplayer</code></td></tr>
+<tr><td><code>companion.target()</code> · player</td><td><code>held_item</code> ; désigne actuellement l’objet tenu, pas le bloc visé.</td></tr>
+<tr><td><code>companion.inventory()</code> · inventory</td><td><code>slots</code> : liste Lua indexée à partir de 1. Chaque ligne porte le numéro de slot Minecraft dans <code>slot</code>.</td></tr>
+<tr><td>Objet</td><td><code>empty, id, name, count, damage, max_damage, model?, lore</code>. Le nom et la description conservent les glyphes du serveur.</td></tr>
+<tr><td><code>companion.session()</code> · session</td><td><code>active, started, elapsed_ms, paused, blocks, earnings, drops</code>. Les gains restent un texte décimal pour éviter la perte de précision. Les drops contiennent <code>name, count</code>.</td></tr>
+<tr><td><code>companion.counters()</code> · counters</td><td><code>money?, gems?, prestige?</code> : textes reçus depuis les barres du serveur. Un champ absent signifie que sa valeur n’a pas été reçue.</td></tr>
+</tbody></table></div><p>Les permissions disponibles sont <code>player, inventory, session, counters, chat, commands, appearance, hud, screens, keys</code>. Elles sont déclarées dans le manifeste et présentées au joueur avant l’installation. Un appel sans permission arrête l’extension.</p></section>
+<section id="apparence"><h2>Créer des thèmes et des dispositions</h2><pre><code>module:appearance {
+    theme = "MIDNIGHT",
+    accent = "72A7F7",
+    layout = "COMPACT",
+    card_style = "GLASS"
+}</code></pre><p>Requiert la permission <code>appearance</code>. Le préréglage s’applique tant que le module est actif ; les préférences personnelles restent conservées. Plusieurs préréglages actifs sont appliqués dans leur ordre de chargement ; le dernier prend priorité sur les champs qu’il définit.</p><ul><li>Thèmes : OBSIDIAN, GRAPHITE, MIDNIGHT, PAPER, SLATE, AMETHYST, MOCHA, FOREST, ROSE, ABYSS.</li><li>Dispositions : STANDARD, COMPACT, FOCUS, LIST, GALLERY, INSPECTOR, RAIL, WIDE.</li><li>Cartes : SOLID, GLASS, OUTLINE, TEXT, LINE, ACCENT, GRADIENT.</li></ul><p>Il s’agit de préréglages pour les interfaces existantes. Les modules peuvent créer leurs propres écrans et HUD avec l’API ; les mises en page arbitraires des écrans internes du Companion ne sont pas exposées dans la v1.</p></section>
+<section id="publication"><h2>Faire approuver et publier une extension</h2><ol><li>Préparez une archive ZIP contenant directement <code>addon.json</code>, <code>main.lua</code> et, si besoin, <code>README.md</code>. Aucun JAR ou exécutable n’est accepté.</li><li>Ouvrez une <a href="https://github.com/SpirtySprite/minerite-companion/issues/new">demande de publication</a> avec votre code source, une description, les permissions utilisées et les versions de Minecraft testées.</li><li>La version est examinée avant publication. L’approbation concerne une archive précise, identifiée par son SHA-256.</li><li>Après approbation, elle apparaît dans le catalogue du jeu. Chaque mise à jour repasse par la même vérification.</li></ol><p>Le catalogue indique la compatibilité, la version, l’auteur et les permissions. L’installation vérifie la taille, l’empreinte et le manifeste avant activation. Si une nouvelle version échoue au chargement, la version précédente est restaurée. Une version révoquée est arrêtée après réception du catalogue actualisé, vérifié environ chaque minute en ligne.</p><div class="developer-callout"><p>Hors ligne, le mod conserve la dernière liste connue. Un retrait d’approbation ne peut pas être reçu sans connexion. Les projets locaux utilisent un circuit distinct réservé au mode développeur.</p></div></section>
+<section id="limites"><h2>Cadre technique</h2><p>Lua 5.2 via LuaJ, avec une sélection limitée des bibliothèques de base. Les accès Java, réseau, processus, fichiers, chargement de code, débogage et coroutines ne sont pas exposés. <code>math</code>, les boucles et les tables Lua sont disponibles ; la bibliothèque string expose uniquement byte, char, len, lower, upper et sub. Les fonctions de table standard ne sont pas exposées : utilisez les indices et l’opérateur #.</p><p>Limites v1 : 32 extensions installées ; 8 modules par extension ; 32 réglages, 32 callbacks, 16 minuteries et 8 raccourcis par module ; 128 opérations HUD par rendu d’extension ; 64 lignes par écran ; script limité à 64 Kio et archive à 512 Kio. Les callbacks disposent d’un budget d’instructions et d’une limite de profondeur. Ils doivent rester courts ; évitez de recalculer vos données à chaque rendu.</p><p>Ces limites réduisent les erreurs et les abus, mais ne constituent pas une isolation mémoire complète d’un programme natif. La revue des sources reste indispensable. Les mixins, nouveaux registres Minecraft et bibliothèques Java externes ne sont pas pris en charge : ils demanderaient un mod Fabric classique avec redémarrage.</p><p>Moteur : <a href="https://github.com/luaj/luaj">LuaJ</a>, licence MIT. L’API est versionnée indépendamment du Companion ; une archive demandant une version inconnue est refusée.</p></section>
+</div></main><footer><span>Minerite Companion</span><p>Projet communautaire indépendant de l’équipe Minerite.</p><a href="documentation">Revenir au guide →</a></footer>
+</body></html>
