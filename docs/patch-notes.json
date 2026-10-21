@@ -2,6 +2,26 @@
   "schema": 1,
   "releases": [
     {
+      "version": "1.46.0-major-beta.3",
+      "github": false,
+      "date": "2026-10-21",
+      "channel": "beta",
+      "title": "Identité Minerite Companion",
+      "summary": "L’identifiant Fabric, le point d’entrée et la configuration des mixins portent désormais le nom du Companion.",
+      "sections": [
+        {
+          "title": "Identité et compatibilité",
+          "items": [
+            "Nouvel identifiant Fabric : minerite_companion. L’ancien identifiant est conservé uniquement comme alias de compatibilité pour les extensions existantes.",
+            "Point d’entrée MineriteCompanion, messages de démarrage et fichier de mixins renommés. Les fichiers de réglages existants sont conservés.",
+            "L’installateur mis à jour reconnaît les deux identifiants et vérifie le point d’entrée correspondant. Les anciens clients publiés nécessitent un remplacement manuel initial du JAR pour adopter le nouvel identifiant.",
+            "Le SDK et le projet Java utilisent désormais minerite_companion comme dépendance Fabric.",
+            "Icônes Java différées et ouverture du hub avant la connexion : les piles d’objets ne sont plus créées avant le chargement de leurs composants."
+          ]
+        }
+      ]
+    },
+    {
       "version": "1.46.0-major-beta.2",
       "github": false,
       "date": "2026-10-21",
