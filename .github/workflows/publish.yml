@@ -17,7 +17,27 @@ jobs:
         run: |
           test -f docs/documentation.html
           test -f docs/downloads.json
-          test -z "$(find . -path './.git' -prune -o -name '*.java' -print -o -name '*sources.jar' -print)"
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, zipfile
+          for path in Path('.').rglob('*'):
+              if '.git' in path.parts or not path.is_file():
+                  continue
+              assert path.suffix != '.java', f'Unexpected loose source: {path}'
+              sdk = path.parent == Path('docs/sdk') and re.fullmatch(r'minerite-companion-java-api-[0-9A-Za-z.+-]+(?:-sources)?\.jar', path.name)
+              if path.name.endswith('sources.jar'):
+                  assert sdk, f'Private source archive: {path}'
+              if sdk:
+                  with zipfile.ZipFile(path) as jar:
+                      for entry in jar.infolist():
+                          if entry.is_dir():
+                              continue
+                          allowed = entry.filename == 'META-INF/MANIFEST.MF' or re.fullmatch(r'fr/minerite/companion/api/Companion(?:Api|Addon)(?:\$[A-Za-z0-9]+)*\.(?:java|class)', entry.filename)
+                          assert allowed, f'Non-API SDK content: {entry.filename}'
+                          content = jar.read(entry)
+                          assert b'kiru/swing' not in content and b'kiru.swing' not in content, f'Private implementation reference: {entry.filename}'
+          print('Public SDK interfaces verified; private sources remain blocked')
+          PY
       - name: Publish release
         if: startsWith(github.ref, 'refs/tags/v')
         env:
