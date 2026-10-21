@@ -28,7 +28,7 @@ function renderGuide() {
   document.title = `${guide.title} · Documentation Minerite Companion`;
   guideContent.append(element('p', 'guide-kicker', `${guide.category} · Version 1.42.0`), element('h2', '', guide.title), element('p', 'guide-lead', guide.summary));
   if (guide.id === 'installation') {
-    const actions = element('div', 'release-actions'); const download = element('a', 'start-link', 'Télécharger la dernière version stable →'); download.href = 'downloads.html'; actions.append(download); guideContent.append(actions);
+    const actions = element('div', 'release-actions'); const download = element('a', 'start-link', 'Télécharger la dernière version stable →'); download.href = 'downloads'; actions.append(download); guideContent.append(actions);
     stableDownload.then(releases => {
       if (!releases.length) return;
       actions.replaceChildren();
