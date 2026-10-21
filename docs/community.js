@@ -3,7 +3,6 @@ const grid = document.querySelector('#addon-grid');
 const status = document.querySelector('#catalogue-status');
 const count = document.querySelector('#addon-count');
 const search = document.querySelector('#addon-search');
-const dialog = document.querySelector('#addon-detail');
 const labels = { module: 'Module', hud: 'HUD', theme: 'Thème', layout: 'Disposition' };
 let addons = [], category = 'all';
 const normalize = value => String(value || '').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
@@ -16,18 +15,6 @@ function icon(item) {
   const url = item.icon && safeFile(item.icon);
   if (url) { const img = document.createElement('img'); img.src = url; img.alt = ''; img.loading = 'lazy'; img.addEventListener('error', () => { box.textContent = '{ }'; }); box.replaceChildren(img); }
   return box;
-}
-function details(item) {
-  const body = document.querySelector('#addon-detail-content'); body.replaceChildren(icon(item));
-  body.append(element('h2', '', item.name), element('p', 'addon-author', `Par ${item.author}`), element('p', '', item.description));
-  const meta = element('div', 'detail-meta');
-  for (const text of [labels[item.category] || 'Module', item.type === 'java' ? 'Java · Redémarrage requis' : 'Lua · Sans redémarrage', `Version ${item.version}`, ...item.minecraft.map(v => `Minecraft ${v}`)]) meta.append(element('span', 'badge', text));
-  body.append(meta);
-  body.append(element('p', '', item.type === 'java' ? 'Placez le JAR dans votre dossier mods, avec la version majeure compatible du Companion et Fabric API, puis redémarrez le jeu.' : 'Ce projet de démonstration est disponible depuis le catalogue Extensions du Companion dans la prochaine version majeure.'));
-  const url = safeFile(item.download);
-  if (url) { const link = element('a', 'start-link', item.type === 'java' ? 'Télécharger le JAR ↓' : 'Télécharger le projet Lua ↓'); link.href = url; link.download = ''; body.append(link); }
-  if (item.sha256) body.append(element('p', '', 'SHA-256'), element('code', '', item.sha256));
-  dialog.showModal();
 }
 function render() {
   grid.replaceChildren();
@@ -43,15 +30,13 @@ function render() {
     const card = element('article', 'addon-card'), top = element('div', 'addon-card-top');
     top.append(icon(item), element('span', 'badge', item.example ? 'EXEMPLE OFFICIEL' : labels[item.category] || 'Module'));
     const bottom = element('div', 'addon-card-bottom'); bottom.append(element('span', '', `${item.type === 'java' ? 'Java' : 'Lua'} · ${item.minecraft.join(' / ')}`));
-    const button = element('button', '', 'Découvrir →'); button.type = 'button'; button.setAttribute('aria-label', `Découvrir ${item.name}`); button.addEventListener('click', () => details(item)); bottom.append(button);
+    const button = element('button', '', 'Découvrir →'); button.type = 'button'; button.setAttribute('aria-label', `Découvrir ${item.name}`); button.addEventListener('click', () => location.assign('extension?id=' + encodeURIComponent(item.modId || item.id) + (item.type === 'lua' ? '&type=lua' : ''))); bottom.append(button);
     const summary = item.description.length > 180 ? item.description.slice(0, 177) + '…' : item.description;
     card.append(top, element('h3', '', item.name), element('p', 'addon-author', `Par ${item.author}`), element('p', '', summary), bottom); grid.append(card);
   }
 }
 for (const button of document.querySelectorAll('[data-category]')) button.addEventListener('click', () => { category = button.dataset.category; for (const other of document.querySelectorAll('[data-category]')) other.setAttribute('aria-pressed', String(other === button)); render(); });
 search.addEventListener('input', render);
-document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
-dialog.addEventListener('click', event => { if (event.target === dialog) { const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); } });
 async function load() {
   let unavailable = false;
   const results = await Promise.allSettled([fetch(api + '/catalogue', { cache: 'no-store' }), fetch('addon-catalogue.json', { cache: 'no-cache' })]);

@@ -2,6 +2,30 @@
   "schema": 1,
   "releases": [
     {
+      "version": "1.46.0-major-beta.4",
+      "github": false,
+      "date": "2026-10-21",
+      "channel": "beta",
+      "title": "Catalogue Java et espace créateur",
+      "summary": "Installation des extensions Java approuvées depuis le jeu et suivi des projets sur le site.",
+      "sections": [
+        {
+          "title": "Extensions",
+          "items": [
+            "Catalogue Java avec recherche, compatibilité, notes de version et préparation des installations après fermeture du jeu.",
+            "Vérification des fichiers, des dépendances et de l’approbation avant installation, avec sauvegarde de la version remplacée.",
+            "Comptes créateurs, mises à jour soumises à validation et pages détaillées des extensions."
+          ]
+        },
+        {
+          "title": "Compatibilité du chat",
+          "items": [
+            "Le champ de saisie du chat conserve désormais l’appel de dessin utilisé par les autres clients au lieu de le remplacer par une redirection exclusive."
+          ]
+        }
+      ]
+    },
+    {
       "version": "1.46.0-major-beta.3",
       "github": false,
       "date": "2026-10-21",

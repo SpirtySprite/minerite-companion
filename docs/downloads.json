@@ -2,6 +2,26 @@
   "schema": 1,
   "releases": [
     {
+      "version": "1.46.0-major-beta.4",
+      "minecraft": "26.2",
+      "channel": "beta",
+      "date": "2026-10-21",
+      "filename": "minerite-companion-1.46.0-major-beta.4+26.2.jar",
+      "url": "downloads/minerite-companion-1.46.0-major-beta.4+26.2.jar",
+      "size": 8389443,
+      "sha256": "950844b87984b28ed3342bad3eb31bfc1f9945efb3aec92a9197672e70d9303f"
+    },
+    {
+      "version": "1.46.0-major-beta.4",
+      "minecraft": "26.3",
+      "channel": "beta",
+      "date": "2026-10-21",
+      "filename": "minerite-companion-1.46.0-major-beta.4+26.3.jar",
+      "url": "downloads/minerite-companion-1.46.0-major-beta.4+26.3.jar",
+      "size": 2439872,
+      "sha256": "9475886fcac29b45c0025c8dd0500e1a33fcba43da21b6726db113b248665d93"
+    },
+    {
       "version": "1.45.0",
       "minecraft": "26.2",
       "channel": "stable",
