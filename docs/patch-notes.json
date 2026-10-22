@@ -2,6 +2,35 @@
   "schema": 1,
   "releases": [
     {
+      "version": "1.46.1-major-beta.1",
+      "github": false,
+      "date": "2026-10-22",
+      "channel": "beta",
+      "title": "Une nouvelle interface",
+      "summary": "Première bêta des menus haute résolution, avec un hub repensé et des icônes propres à chaque module.",
+      "sections": [
+        {
+          "title": "Menus et navigation",
+          "items": [
+            "Nouvel accueil, navigateur de serveurs et interface de pause avec des textes plus nets.",
+            "Hub de modules avec recherche, catégories, icônes vectorielles colorées et réglages d’apparence conservés.",
+            "Nouveau rendu des réglages, du wiki, du calculateur, des thèmes, de la configuration initiale, du nuancier et des notes de version.",
+            "Navigation au clavier, saisie, défilement et retours entre les écrans."
+          ]
+        },
+        {
+          "title": "Installation et compatibilité",
+          "items": [
+            "Moteur de rendu inclus : aucune installation supplémentaire sur Windows 64 bits. Les autres plateformes conservent les menus habituels.",
+            "Si un autre client a déjà chargé un moteur de rendu incompatible, le Companion conserve les menus habituels pour éviter un conflit natif.",
+            "Option « Interface haute résolution » dans Réglages > Confort visuel pour revenir au rendu habituel.",
+            "Les inventaires, les menus du serveur dont l’AH, le HUD permanent et l’atelier 3D gardent leur interface actuelle dans cette bêta.",
+            "Version expérimentale pour Minecraft 26.2 et 26.3. Les réglages existants sont conservés."
+          ]
+        }
+      ]
+    },
+    {
       "version": "1.46.0-major-beta.4",
       "github": false,
       "date": "2026-10-21",
@@ -293,90 +322,126 @@
       "title": "Minerite Companion · première version stable",
       "summary": "Minerite Companion est un mod client communautaire qui rassemble les outils de minage, les recettes et les informations de Minerite dans une interface personnalisable. Cette première version stable présente l’ensemble des fonctionnalités disponibles : 26 modules, des menus du serveur repensés, un wiki intégré et des outils pour adapter votre affichage à votre façon de jouer.",
       "sections": [
-        {"title": "Installation et premiers pas", "items": [
-          "Prérequis : Minecraft Java 26.2, Java 25, Fabric Loader 0.19.0 ou plus récent et Fabric API pour Minecraft 26.2. Le mod s’installe uniquement côté client.",
-          "Téléchargez minerite-companion-1.42.0+26.2.jar dans les fichiers de cette publication et placez-le dans le dossier mods de votre instance Fabric. Retirez l’ancien JAR du Companion si vous en avez déjà un, puis lancez le jeu.",
-          "En jeu, Maj droite ouvre les modules. Utilisez la recherche ou les catégories pour trouver un outil : son interrupteur l’active, sa carte donne accès à ses réglages. Le Companion est aussi accessible depuis les menus d’accueil et de pause.",
-          "Commencez par choisir votre thème, puis ouvrez Modifier le HUD pour placer les panneaux. Tous les raccourcis peuvent être changés dans les réglages ; une configuration existante est conservée."
-        ]},
-        {"title": "Minage et progression", "items": [
-          "Session de minage : suivi de la durée, des objets obtenus, des gains reçus et des gains par heure, avec pause et historique des sessions. Les gains reposent sur les messages de paiement reconnus du serveur.",
-          "Taux de découverte : consultez la répartition des objets obtenus. Les pourcentages sont calculés à partir de vos observations ; ils ne représentent pas les taux officiels du serveur.",
-          "Objectifs d’évolution : les conditions présentes dans la description de la pioche tenue sont affichées dans un panneau de progression, pour suivre les objectifs restants sans rouvrir sa description.",
-          "Alertes de minerais : choisissez individuellement les minerais à signaler lorsqu’ils sont mis au jour. Le catalogue propose une recherche et des filtres pour les minerais personnalisés, classiques ou sélectionnés.",
-          "Compteurs du serveur : affichez le solde, les gemmes et le prestige dans des panneaux déplaçables, à partir des informations reçues du serveur."
-        ]},
-        {"title": "Recettes et fabrication", "items": [
-          "Calculateur de fabrication : choisissez une recette et une quantité cible pour connaître les matériaux nécessaires. Épinglez un objectif sur le HUD afin de suivre les ingrédients disponibles et manquants.",
-          "Stockages mémorisés : le calculateur peut tenir compte des contenus connus du coffre de l’Ender et des shulkers. Ouvrez ces stockages pour actualiser les données ; leur contenu n’est pas récupéré à distance en permanence.",
-          "Navigateur de recettes : une grille sur le côté droit de l’inventaire permet de rechercher les recettes personnalisées reçues du serveur et certaines conversions utiles de lingots et blocs, sans afficher tout le catalogue vanilla.",
-          "Recherche par rareté : retrouvez les recettes avec leur nom ou une rareté comme primordial, même lorsque celle-ci est affichée sous forme de glyphe reconnu dans le nom de l’objet.",
-          "Établi personnalisé /craft : consultez les recettes connues du client et leurs ingrédients, remplissez la grille si vous disposez des bons objets, puis utilisez Fabriquer au maximum lorsque le résultat est prêt. Les variantes personnalisées et les quantités requises sont vérifiées ; la fabrication reste traitée par le serveur."
-        ]},
-        {"title": "Wiki Minerite intégré", "items": [
-          "Parcourez les pioches, les prestiges, les minerais et les recettes dans des fiches classées, avec recherche, filtres par monde et favoris.",
-          "Les fiches expliquent les conditions d’évolution et les récompenses documentées. Les icônes et modèles Minerite sont utilisés lorsqu’ils sont disponibles.",
-          "Le contenu provient du wiki Minerite Community. Chaque fiche conserve sa source et le catalogue indique la date de son relevé ; il reste consultable hors ligne, mais peut prendre du retard sur les changements du serveur.",
-          "Les fiches de recettes compatibles donnent accès au calculateur de fabrication. Le guide du Companion permet également de retrouver le wiki et les principaux réglages."
-        ]},
-        {"title": "Menus du serveur et hôtel des ventes", "items": [
-          "Interfaces personnalisées pour les destinations, la boutique, l’index des minerais et ses catégories, les améliorations de pioche, les prestiges, /sell, /autosell, /baltop et le coffre de l’Ender.",
-          "Les améliorations regroupent chaque statistique autour de son action utile : coût en niveaux ou niveau maximal atteint. La réapplication des statistiques dispose d’une action séparée.",
-          "Hôtel des ventes : parcourez les annonces et vos objets en vente avec une recherche et un panneau de détails. Les pages du serveur se chargent en arrière-plan pendant la consultation pour étendre la recherche aux annonces collectées.",
-          "Avant d’ouvrir une annonce mémorisée, le mod retrouve sa page et vérifie l’objet, sa quantité, son vendeur, son prix et ses métadonnées. Une annonce périmée peut être refusée ; le cache ne garantit pas qu’elle soit encore disponible.",
-          "Les achats et sélecteurs de quantité ont leurs propres présentations. Les boutons déclenchent les actions du vrai menu serveur : le mod ne remplace pas ses règles, prix, délais ou confirmations.",
-          "F6 permet de retrouver le menu d’origine et F8 de choisir une présentation dans les menus concernés. Les interfaces du serveur peuvent être désactivées globalement ou par catégorie."
-        ]},
-        {"title": "Inventaire et raccourcis personnels", "items": [
-          "Inventaire personnalisé : présentation des emplacements d’équipement, de fabrication, de stockage et de la barre rapide, avec aperçu du personnage et opacité réglable.",
-          "Aperçu interactif des shulkers : maintenez Maj sur une shulker pour inspecter son contenu connu et survoler les objets du panneau. Relâchez Maj pour revenir à l’inventaire. Le mod n’invente pas le contenu des boîtes dont les données sont inconnues.",
-          "Boutons d’inventaire : placez vos propres raccourcis autour de l’inventaire et choisissez leur libellé, leur icône, la commande exécutée, la taille, le thème et le style.",
-          "Organisez les boutons dans plusieurs profils, dupliquez une disposition et utilisez la grille d’aimantation pour les aligner. Des raccourcis Minerite sont proposés au départ."
-        ]},
-        {"title": "HUD et affichage en jeu", "items": [
-          "Éditeur du HUD : déplacez et redimensionnez les panneaux, réglez leur apparence et utilisez l’aimantation, les repères et les boutons d’alignement pour organiser l’écran.",
-          "Widgets utilitaires : compteur de FPS, coordonnées, direction et angles de vue, ainsi qu’un aperçu de l’inventaire à afficher en maintenant sa touche.",
-          "Barre d’accès rapide : taille et espacement des cases, forme, opacité, compteurs d’objets, emplacement de la seconde main et animation de sélection configurables.",
-          "État du joueur : santé, faim, armure et expérience dans une présentation compacte ou complète, adaptée à la barre rapide.",
-          "Liste des joueurs et noms en jeu : affichage personnalisé conservant les informations de rang et icônes fournies par le serveur. Les noms disposent de réglages de taille, de fond et de distance.",
-          "Tchat : fond réglable jusqu’à 0 % d’opacité, espacement des lignes, en-tête et animations de fondu configurables. Les messages et interactions restent ceux de Minecraft."
-        ]},
-        {"title": "Apparence, viseur et zoom", "items": [
-          "Atelier de pioches : choisissez un modèle et ajustez sa taille, sa position, ses rotations, son éclat et son animation. L’aperçu avec votre personnage permet de vérifier le résultat ; des profils et réglages par modèle sont disponibles.",
-          "Textures des minerais : personnalisez l’apparence des minerais et leurs icônes individuellement. Les réglages concernent le rendu local et ne changent pas les objets du serveur.",
-          "Bordures de rareté : réglez séparément les contours, leur intensité, les coins au survol et le fond de sélection des objets.",
-          "Surbrillance des blocs : adaptez les contours et couleurs du bloc visé. Le studio de viseur propose forme, écart, épaisseur, contour et couleur, avec des réglages distincts selon la cible.",
-          "Zoom progressif : maintenez C pour zoomer et utilisez la molette pendant le zoom pour ajuster le grossissement. Relâchez la touche pour revenir progressivement à la vue normale.",
-          "Garde-robe : Cosmetica est inclus pour l’accès aux cosmétiques. La disponibilité du catalogue et des apparences dépend aussi de son service et des données des joueurs."
-        ]},
-        {"title": "Thèmes, dispositions et navigation", "items": [
-          "Accueil, navigateur de serveurs et menu de pause personnalisés. Le navigateur permet de retrouver vos serveurs, d’en enregistrer en favoris et de consulter leur état et leur ping.",
-          "Dix thèmes : Obsidienne, Graphite, Minuit, Clair, Ardoise, Améthyste, Moka, Forêt, Rose noire et Abysses, avec couleur d’accent personnalisable.",
-          "Huit dispositions du hub : Classique, Compacte, Centrée, Liste, Galerie, Avec inspecteur, Rail d’icônes et Panoramique.",
-          "Sept styles de cartes : Plein, Verre fumé, Contour, Texte seul, Ligne, Accent latéral et Dégradé. Les préférences par module permettent notamment de choisir un nom, une couleur, un style et un favori.",
-          "Réglez les arrondis, l’opacité, l’assombrissement du fond, les descriptions, les icônes et le contraste. Les transitions d’ouverture, de fermeture et de changement d’écran, le défilement progressif et les infobulles disposent de préférences dédiées."
-        ]},
-        {"title": "Commandes et touches utiles", "items": [
-          "Raccourcis par défaut : Maj droite ouvre les modules ; F8 ouvre les sessions de minage ; F9 les alertes de minerais ; F10 l’éditeur du HUD ; C active le zoom tant que la touche reste enfoncée. F8 a une fonction de présentation dans certains menus serveur.",
-          "Roue de commandes : configurez huit raccourcis pour lancer vos commandes habituelles sans les retaper. Sa touche et le contenu de chaque entrée sont modifiables.",
-          "Angles enregistrés : mémorisez une orientation et une inclinaison, puis retrouvez-les avec le raccourci associé.",
-          "Marche et minage automatiques : le module peut maintenir l’avancée et/ou le minage, avec une orientation de départ facultative. J l’active ou l’arrête par défaut ; ses actions et sa touche sont configurables.",
-          "Consultez Raccourcis pour connaître les touches réellement affectées dans votre profil, les modifier et repérer les conflits. Une ancienne configuration conserve ses propres affectations."
-        ]},
-        {"title": "Mises à jour, notes de version et sources", "items": [
-          "Au lancement, le Companion recherche les publications compatibles du dépôt officiel et propose une mise à jour lorsqu’une version plus récente existe. Vous pouvez accepter ou reporter, et désactiver cette vérification.",
-          "Après votre accord, le JAR est téléchargé et vérifié par SHA-256. L’installateur attend la fermeture de Minecraft, sauvegarde l’ancienne version et conserve vos réglages ; la nouvelle version est chargée au lancement suivant.",
-          "Le Mode développeur est désactivé par défaut : seules les versions stables sont proposées. Activez-le pour recevoir également les bêtas.",
-          "Le journal des versions est accessible dans Réglages → Aide et raccourcis → Notes de version, ainsi que sur le site du projet. Les sources et le suivi des problèmes sont publics sur ce dépôt GitHub.",
-          "Minerite Companion est un projet communautaire indépendant de l’équipe Minerite. Les outils serveur utilisent les informations reçues par le client et les menus ouverts ; ils ne donnent pas accès à une API privée ni à des données de joueur non reçues."
-        ]},
-        {"title": "Correctifs de cette stable et limites connues", "items": [
-          "Correction des annonces AH d’autres pages rejetées à cause du marqueur temporaire du menu ; les autres contrôles d’identité sont conservés. Correction de la disponibilité des recettes confondant des variantes personnalisées.",
-          "Correction des petits boutons et de l’état des pings du navigateur, ainsi que du rechargement de ressources déclenché pendant la fermeture après observation d’un crash natif FreeType.",
-          "Cette stable reprend les corrections des bêtas sur les compteurs de minage, les sauvegardes, les stockages mémorisés, la pagination, les téléchargements et les performances.",
-          "Validation : 24 programmes de vérification automatisés, compilation GitHub réussie et essais en jeu sur Minerite. Les achats réels, la fabrication maximale sur le serveur et le maintien prolongé de Maj dans les aperçus n’ont pas été entièrement validés manuellement.",
-          "À petite résolution, des panneaux HUD déjà placés peuvent se chevaucher : ajustez leur taille et leur position dans l’éditeur. Des avertissements liés à un ancien pack local et à des signatures de textures Cosmetica ont été observés ; le détail de la validation figure dans RELEASE_READINESS.md."
-        ]}
+        {
+          "title": "Installation et premiers pas",
+          "items": [
+            "Prérequis : Minecraft Java 26.2, Java 25, Fabric Loader 0.19.0 ou plus récent et Fabric API pour Minecraft 26.2. Le mod s’installe uniquement côté client.",
+            "Téléchargez minerite-companion-1.42.0+26.2.jar dans les fichiers de cette publication et placez-le dans le dossier mods de votre instance Fabric. Retirez l’ancien JAR du Companion si vous en avez déjà un, puis lancez le jeu.",
+            "En jeu, Maj droite ouvre les modules. Utilisez la recherche ou les catégories pour trouver un outil : son interrupteur l’active, sa carte donne accès à ses réglages. Le Companion est aussi accessible depuis les menus d’accueil et de pause.",
+            "Commencez par choisir votre thème, puis ouvrez Modifier le HUD pour placer les panneaux. Tous les raccourcis peuvent être changés dans les réglages ; une configuration existante est conservée."
+          ]
+        },
+        {
+          "title": "Minage et progression",
+          "items": [
+            "Session de minage : suivi de la durée, des objets obtenus, des gains reçus et des gains par heure, avec pause et historique des sessions. Les gains reposent sur les messages de paiement reconnus du serveur.",
+            "Taux de découverte : consultez la répartition des objets obtenus. Les pourcentages sont calculés à partir de vos observations ; ils ne représentent pas les taux officiels du serveur.",
+            "Objectifs d’évolution : les conditions présentes dans la description de la pioche tenue sont affichées dans un panneau de progression, pour suivre les objectifs restants sans rouvrir sa description.",
+            "Alertes de minerais : choisissez individuellement les minerais à signaler lorsqu’ils sont mis au jour. Le catalogue propose une recherche et des filtres pour les minerais personnalisés, classiques ou sélectionnés.",
+            "Compteurs du serveur : affichez le solde, les gemmes et le prestige dans des panneaux déplaçables, à partir des informations reçues du serveur."
+          ]
+        },
+        {
+          "title": "Recettes et fabrication",
+          "items": [
+            "Calculateur de fabrication : choisissez une recette et une quantité cible pour connaître les matériaux nécessaires. Épinglez un objectif sur le HUD afin de suivre les ingrédients disponibles et manquants.",
+            "Stockages mémorisés : le calculateur peut tenir compte des contenus connus du coffre de l’Ender et des shulkers. Ouvrez ces stockages pour actualiser les données ; leur contenu n’est pas récupéré à distance en permanence.",
+            "Navigateur de recettes : une grille sur le côté droit de l’inventaire permet de rechercher les recettes personnalisées reçues du serveur et certaines conversions utiles de lingots et blocs, sans afficher tout le catalogue vanilla.",
+            "Recherche par rareté : retrouvez les recettes avec leur nom ou une rareté comme primordial, même lorsque celle-ci est affichée sous forme de glyphe reconnu dans le nom de l’objet.",
+            "Établi personnalisé /craft : consultez les recettes connues du client et leurs ingrédients, remplissez la grille si vous disposez des bons objets, puis utilisez Fabriquer au maximum lorsque le résultat est prêt. Les variantes personnalisées et les quantités requises sont vérifiées ; la fabrication reste traitée par le serveur."
+          ]
+        },
+        {
+          "title": "Wiki Minerite intégré",
+          "items": [
+            "Parcourez les pioches, les prestiges, les minerais et les recettes dans des fiches classées, avec recherche, filtres par monde et favoris.",
+            "Les fiches expliquent les conditions d’évolution et les récompenses documentées. Les icônes et modèles Minerite sont utilisés lorsqu’ils sont disponibles.",
+            "Le contenu provient du wiki Minerite Community. Chaque fiche conserve sa source et le catalogue indique la date de son relevé ; il reste consultable hors ligne, mais peut prendre du retard sur les changements du serveur.",
+            "Les fiches de recettes compatibles donnent accès au calculateur de fabrication. Le guide du Companion permet également de retrouver le wiki et les principaux réglages."
+          ]
+        },
+        {
+          "title": "Menus du serveur et hôtel des ventes",
+          "items": [
+            "Interfaces personnalisées pour les destinations, la boutique, l’index des minerais et ses catégories, les améliorations de pioche, les prestiges, /sell, /autosell, /baltop et le coffre de l’Ender.",
+            "Les améliorations regroupent chaque statistique autour de son action utile : coût en niveaux ou niveau maximal atteint. La réapplication des statistiques dispose d’une action séparée.",
+            "Hôtel des ventes : parcourez les annonces et vos objets en vente avec une recherche et un panneau de détails. Les pages du serveur se chargent en arrière-plan pendant la consultation pour étendre la recherche aux annonces collectées.",
+            "Avant d’ouvrir une annonce mémorisée, le mod retrouve sa page et vérifie l’objet, sa quantité, son vendeur, son prix et ses métadonnées. Une annonce périmée peut être refusée ; le cache ne garantit pas qu’elle soit encore disponible.",
+            "Les achats et sélecteurs de quantité ont leurs propres présentations. Les boutons déclenchent les actions du vrai menu serveur : le mod ne remplace pas ses règles, prix, délais ou confirmations.",
+            "F6 permet de retrouver le menu d’origine et F8 de choisir une présentation dans les menus concernés. Les interfaces du serveur peuvent être désactivées globalement ou par catégorie."
+          ]
+        },
+        {
+          "title": "Inventaire et raccourcis personnels",
+          "items": [
+            "Inventaire personnalisé : présentation des emplacements d’équipement, de fabrication, de stockage et de la barre rapide, avec aperçu du personnage et opacité réglable.",
+            "Aperçu interactif des shulkers : maintenez Maj sur une shulker pour inspecter son contenu connu et survoler les objets du panneau. Relâchez Maj pour revenir à l’inventaire. Le mod n’invente pas le contenu des boîtes dont les données sont inconnues.",
+            "Boutons d’inventaire : placez vos propres raccourcis autour de l’inventaire et choisissez leur libellé, leur icône, la commande exécutée, la taille, le thème et le style.",
+            "Organisez les boutons dans plusieurs profils, dupliquez une disposition et utilisez la grille d’aimantation pour les aligner. Des raccourcis Minerite sont proposés au départ."
+          ]
+        },
+        {
+          "title": "HUD et affichage en jeu",
+          "items": [
+            "Éditeur du HUD : déplacez et redimensionnez les panneaux, réglez leur apparence et utilisez l’aimantation, les repères et les boutons d’alignement pour organiser l’écran.",
+            "Widgets utilitaires : compteur de FPS, coordonnées, direction et angles de vue, ainsi qu’un aperçu de l’inventaire à afficher en maintenant sa touche.",
+            "Barre d’accès rapide : taille et espacement des cases, forme, opacité, compteurs d’objets, emplacement de la seconde main et animation de sélection configurables.",
+            "État du joueur : santé, faim, armure et expérience dans une présentation compacte ou complète, adaptée à la barre rapide.",
+            "Liste des joueurs et noms en jeu : affichage personnalisé conservant les informations de rang et icônes fournies par le serveur. Les noms disposent de réglages de taille, de fond et de distance.",
+            "Tchat : fond réglable jusqu’à 0 % d’opacité, espacement des lignes, en-tête et animations de fondu configurables. Les messages et interactions restent ceux de Minecraft."
+          ]
+        },
+        {
+          "title": "Apparence, viseur et zoom",
+          "items": [
+            "Atelier de pioches : choisissez un modèle et ajustez sa taille, sa position, ses rotations, son éclat et son animation. L’aperçu avec votre personnage permet de vérifier le résultat ; des profils et réglages par modèle sont disponibles.",
+            "Textures des minerais : personnalisez l’apparence des minerais et leurs icônes individuellement. Les réglages concernent le rendu local et ne changent pas les objets du serveur.",
+            "Bordures de rareté : réglez séparément les contours, leur intensité, les coins au survol et le fond de sélection des objets.",
+            "Surbrillance des blocs : adaptez les contours et couleurs du bloc visé. Le studio de viseur propose forme, écart, épaisseur, contour et couleur, avec des réglages distincts selon la cible.",
+            "Zoom progressif : maintenez C pour zoomer et utilisez la molette pendant le zoom pour ajuster le grossissement. Relâchez la touche pour revenir progressivement à la vue normale.",
+            "Garde-robe : Cosmetica est inclus pour l’accès aux cosmétiques. La disponibilité du catalogue et des apparences dépend aussi de son service et des données des joueurs."
+          ]
+        },
+        {
+          "title": "Thèmes, dispositions et navigation",
+          "items": [
+            "Accueil, navigateur de serveurs et menu de pause personnalisés. Le navigateur permet de retrouver vos serveurs, d’en enregistrer en favoris et de consulter leur état et leur ping.",
+            "Dix thèmes : Obsidienne, Graphite, Minuit, Clair, Ardoise, Améthyste, Moka, Forêt, Rose noire et Abysses, avec couleur d’accent personnalisable.",
+            "Huit dispositions du hub : Classique, Compacte, Centrée, Liste, Galerie, Avec inspecteur, Rail d’icônes et Panoramique.",
+            "Sept styles de cartes : Plein, Verre fumé, Contour, Texte seul, Ligne, Accent latéral et Dégradé. Les préférences par module permettent notamment de choisir un nom, une couleur, un style et un favori.",
+            "Réglez les arrondis, l’opacité, l’assombrissement du fond, les descriptions, les icônes et le contraste. Les transitions d’ouverture, de fermeture et de changement d’écran, le défilement progressif et les infobulles disposent de préférences dédiées."
+          ]
+        },
+        {
+          "title": "Commandes et touches utiles",
+          "items": [
+            "Raccourcis par défaut : Maj droite ouvre les modules ; F8 ouvre les sessions de minage ; F9 les alertes de minerais ; F10 l’éditeur du HUD ; C active le zoom tant que la touche reste enfoncée. F8 a une fonction de présentation dans certains menus serveur.",
+            "Roue de commandes : configurez huit raccourcis pour lancer vos commandes habituelles sans les retaper. Sa touche et le contenu de chaque entrée sont modifiables.",
+            "Angles enregistrés : mémorisez une orientation et une inclinaison, puis retrouvez-les avec le raccourci associé.",
+            "Marche et minage automatiques : le module peut maintenir l’avancée et/ou le minage, avec une orientation de départ facultative. J l’active ou l’arrête par défaut ; ses actions et sa touche sont configurables.",
+            "Consultez Raccourcis pour connaître les touches réellement affectées dans votre profil, les modifier et repérer les conflits. Une ancienne configuration conserve ses propres affectations."
+          ]
+        },
+        {
+          "title": "Mises à jour, notes de version et sources",
+          "items": [
+            "Au lancement, le Companion recherche les publications compatibles du dépôt officiel et propose une mise à jour lorsqu’une version plus récente existe. Vous pouvez accepter ou reporter, et désactiver cette vérification.",
+            "Après votre accord, le JAR est téléchargé et vérifié par SHA-256. L’installateur attend la fermeture de Minecraft, sauvegarde l’ancienne version et conserve vos réglages ; la nouvelle version est chargée au lancement suivant.",
+            "Le Mode développeur est désactivé par défaut : seules les versions stables sont proposées. Activez-le pour recevoir également les bêtas.",
+            "Le journal des versions est accessible dans Réglages → Aide et raccourcis → Notes de version, ainsi que sur le site du projet. Les sources et le suivi des problèmes sont publics sur ce dépôt GitHub.",
+            "Minerite Companion est un projet communautaire indépendant de l’équipe Minerite. Les outils serveur utilisent les informations reçues par le client et les menus ouverts ; ils ne donnent pas accès à une API privée ni à des données de joueur non reçues."
+          ]
+        },
+        {
+          "title": "Correctifs de cette stable et limites connues",
+          "items": [
+            "Correction des annonces AH d’autres pages rejetées à cause du marqueur temporaire du menu ; les autres contrôles d’identité sont conservés. Correction de la disponibilité des recettes confondant des variantes personnalisées.",
+            "Correction des petits boutons et de l’état des pings du navigateur, ainsi que du rechargement de ressources déclenché pendant la fermeture après observation d’un crash natif FreeType.",
+            "Cette stable reprend les corrections des bêtas sur les compteurs de minage, les sauvegardes, les stockages mémorisés, la pagination, les téléchargements et les performances.",
+            "Validation : 24 programmes de vérification automatisés, compilation GitHub réussie et essais en jeu sur Minerite. Les achats réels, la fabrication maximale sur le serveur et le maintien prolongé de Maj dans les aperçus n’ont pas été entièrement validés manuellement.",
+            "À petite résolution, des panneaux HUD déjà placés peuvent se chevaucher : ajustez leur taille et leur position dans l’éditeur. Des avertissements liés à un ancien pack local et à des signatures de textures Cosmetica ont été observés ; le détail de la validation figure dans RELEASE_READINESS.md."
+          ]
+        }
       ]
     },
     {
@@ -387,10 +452,43 @@
       "title": "Des compteurs et des sauvegardes plus fiables",
       "summary": "Nouvelle passe de corrections sur le suivi des objets, les stockages, les sauvegardes et la récupération des mises à jour.",
       "sections": [
-        {"title": "Suivi du minage et des stockages", "items": ["Les objets remis dans l’inventaire à la fermeture d’un menu ne sont plus comptés comme des gains de minage.", "Une commande différente annule désormais une demande de coffre de l’Ender ou de shulker restée en attente.", "Les changements de serveur réinitialisent les compteurs temporaires de stockage avant les premières mises à jour de blocs.", "Les sauvegardes de fabrication en attente peuvent être enregistrées même après une déconnexion.", "Les historiques incomplets sont réparés au chargement, en conservant leurs entrées valides.", "Le nombre de shulkers inconnues ne peut plus devenir négatif par dépassement de capacité."]},
-        {"title": "Interfaces", "items": ["Le numéro de page reste cohérent en bas d’une liste et les changements de page respectent les lignes complètes.", "Le navigateur de serveurs peut relancer les vérifications interrompues après le retour d’un autre écran.", "La fabrication ignore les résultats vides et sa recherche reconnaît les noms français et les raretés en glyphes."]},
-        {"title": "Performances et sauvegardes", "items": ["Le suivi du minage évite de parcourir l’inventaire lorsque la collecte est inactive.", "Les recherches du navigateur de fabrication sont réutilisées entre les images et les vérifications de disponibilité ne sont plus répétées pour le même affichage.", "Les réglages du HUD et des alertes de minerais sont enregistrés en arrière-plan, avec sauvegarde des changements en attente à la fermeture.", "Les écritures de réglages ne conservent plus le verrou de saisie pendant les accès au disque.", "Le calcul des stockages utilise un index des shulkers mémorisées."]},
-        {"title": "Mises à jour", "items": ["Une connexion qui reçoit les en-têtes HTTP mais cesse de transmettre les données est interrompue à l’expiration du délai ; une nouvelle tentative reste possible.", "La taille des réponses est limitée pendant leur réception et le téléchargement du JAR reste effectué directement vers un fichier.", "La recherche de versions stables utilise la dernière publication stable, même si de nombreuses bêtas ont été publiées depuis."]}
+        {
+          "title": "Suivi du minage et des stockages",
+          "items": [
+            "Les objets remis dans l’inventaire à la fermeture d’un menu ne sont plus comptés comme des gains de minage.",
+            "Une commande différente annule désormais une demande de coffre de l’Ender ou de shulker restée en attente.",
+            "Les changements de serveur réinitialisent les compteurs temporaires de stockage avant les premières mises à jour de blocs.",
+            "Les sauvegardes de fabrication en attente peuvent être enregistrées même après une déconnexion.",
+            "Les historiques incomplets sont réparés au chargement, en conservant leurs entrées valides.",
+            "Le nombre de shulkers inconnues ne peut plus devenir négatif par dépassement de capacité."
+          ]
+        },
+        {
+          "title": "Interfaces",
+          "items": [
+            "Le numéro de page reste cohérent en bas d’une liste et les changements de page respectent les lignes complètes.",
+            "Le navigateur de serveurs peut relancer les vérifications interrompues après le retour d’un autre écran.",
+            "La fabrication ignore les résultats vides et sa recherche reconnaît les noms français et les raretés en glyphes."
+          ]
+        },
+        {
+          "title": "Performances et sauvegardes",
+          "items": [
+            "Le suivi du minage évite de parcourir l’inventaire lorsque la collecte est inactive.",
+            "Les recherches du navigateur de fabrication sont réutilisées entre les images et les vérifications de disponibilité ne sont plus répétées pour le même affichage.",
+            "Les réglages du HUD et des alertes de minerais sont enregistrés en arrière-plan, avec sauvegarde des changements en attente à la fermeture.",
+            "Les écritures de réglages ne conservent plus le verrou de saisie pendant les accès au disque.",
+            "Le calcul des stockages utilise un index des shulkers mémorisées."
+          ]
+        },
+        {
+          "title": "Mises à jour",
+          "items": [
+            "Une connexion qui reçoit les en-têtes HTTP mais cesse de transmettre les données est interrompue à l’expiration du délai ; une nouvelle tentative reste possible.",
+            "La taille des réponses est limitée pendant leur réception et le téléchargement du JAR reste effectué directement vers un fichier.",
+            "La recherche de versions stables utilise la dernière publication stable, même si de nombreuses bêtas ont été publiées depuis."
+          ]
+        }
       ]
     },
     {
@@ -401,9 +499,32 @@
       "title": "Stabilisation avant la première version stable",
       "summary": "Cette version corrige un plantage au démarrage et réduit le travail effectué pendant les réglages, les recherches et le défilement des menus.",
       "sections": [
-        {"title": "Correctifs", "items": ["Correction des deux interceptions de déplacement de souris de l’aperçu des shulkers, qui ciblaient une méthode ne contenant plus ces appels dans Minecraft 26.2.", "Une réponse d’une ancienne page de l’AH ne peut plus être traitée comme une page fraîchement chargée pour valider une sélection.", "Suppression des inscriptions de textures en double dans les atlas ; les textures de minerais générées pour le monde et pour les objets sont séparées."]},
-        {"title": "Optimisations", "items": ["Les modifications successives des réglages sont regroupées et enregistrées en arrière-plan. Les changements en attente sont enregistrés à la fermeture du jeu.", "Les copies des réglages de pioche ne passent plus par une sérialisation JSON.", "Les textes des annonces sont préparés une seule fois pour la recherche, avec prise en charge des accents et des raretés en glyphes.", "Le cache des animations reste borné pendant le défilement prolongé des menus.", "Les expressions régulières utilisées pour les noms de menus et les raretés sont réutilisées."]},
-        {"title": "Vérifications", "items": ["Le build contrôle désormais les cibles des interceptions directement dans le bytecode de Minecraft.", "De nouveaux tests vérifient les atlas, l’enregistrement des préférences à la fermeture et les limites du cache d’animations.", "Cette version reste en bêta pendant la validation avant publication stable."]}
+        {
+          "title": "Correctifs",
+          "items": [
+            "Correction des deux interceptions de déplacement de souris de l’aperçu des shulkers, qui ciblaient une méthode ne contenant plus ces appels dans Minecraft 26.2.",
+            "Une réponse d’une ancienne page de l’AH ne peut plus être traitée comme une page fraîchement chargée pour valider une sélection.",
+            "Suppression des inscriptions de textures en double dans les atlas ; les textures de minerais générées pour le monde et pour les objets sont séparées."
+          ]
+        },
+        {
+          "title": "Optimisations",
+          "items": [
+            "Les modifications successives des réglages sont regroupées et enregistrées en arrière-plan. Les changements en attente sont enregistrés à la fermeture du jeu.",
+            "Les copies des réglages de pioche ne passent plus par une sérialisation JSON.",
+            "Les textes des annonces sont préparés une seule fois pour la recherche, avec prise en charge des accents et des raretés en glyphes.",
+            "Le cache des animations reste borné pendant le défilement prolongé des menus.",
+            "Les expressions régulières utilisées pour les noms de menus et les raretés sont réutilisées."
+          ]
+        },
+        {
+          "title": "Vérifications",
+          "items": [
+            "Le build contrôle désormais les cibles des interceptions directement dans le bytecode de Minecraft.",
+            "De nouveaux tests vérifient les atlas, l’enregistrement des préférences à la fermeture et les limites du cache d’animations.",
+            "Cette version reste en bêta pendant la validation avant publication stable."
+          ]
+        }
       ]
     },
     {
@@ -414,9 +535,29 @@
       "title": "Des mises à jour à votre rythme",
       "summary": "Choisissez les versions proposées par le Companion et retrouvez les nouveautés dans un journal de versions commun au client et au site.",
       "sections": [
-        {"title": "Canaux de mise à jour", "items": ["Le Mode développeur est désactivé par défaut : seules les versions stables sont proposées.", "Activez le Mode développeur pour recevoir également les versions bêta.", "Chaque mise à jour demande votre accord avant le téléchargement et s’installe après la fermeture du jeu."]},
-        {"title": "Un vrai journal de versions", "items": ["Une nouvelle page dans le Companion présente les nouveautés, améliorations et correctifs de chaque version.", "Filtrez les versions stables et bêta, parcourez l’historique et consultez les notes depuis la fenêtre de mise à jour.", "Le site public et les notes publiées sur GitHub utilisent la même source."]},
-        {"title": "Installation vérifiée", "items": ["Le fichier téléchargé est vérifié par SHA-256 et ses dépendances Java et Fabric sont contrôlées.", "L’installateur attend la fermeture du processus Minecraft, conserve une sauvegarde et ne remplace pas une installation modifiée entre-temps."]}
+        {
+          "title": "Canaux de mise à jour",
+          "items": [
+            "Le Mode développeur est désactivé par défaut : seules les versions stables sont proposées.",
+            "Activez le Mode développeur pour recevoir également les versions bêta.",
+            "Chaque mise à jour demande votre accord avant le téléchargement et s’installe après la fermeture du jeu."
+          ]
+        },
+        {
+          "title": "Un vrai journal de versions",
+          "items": [
+            "Une nouvelle page dans le Companion présente les nouveautés, améliorations et correctifs de chaque version.",
+            "Filtrez les versions stables et bêta, parcourez l’historique et consultez les notes depuis la fenêtre de mise à jour.",
+            "Le site public et les notes publiées sur GitHub utilisent la même source."
+          ]
+        },
+        {
+          "title": "Installation vérifiée",
+          "items": [
+            "Le fichier téléchargé est vérifié par SHA-256 et ses dépendances Java et Fabric sont contrôlées.",
+            "L’installateur attend la fermeture du processus Minecraft, conserve une sauvegarde et ne remplace pas une installation modifiée entre-temps."
+          ]
+        }
       ]
     },
     {
@@ -427,8 +568,21 @@
       "title": "Le Companion arrive sur GitHub",
       "summary": "Le code source est désormais public, avec une compilation Gradle et un système de mise à jour soumis à votre confirmation.",
       "sections": [
-        {"title": "Code source", "items": ["Publication des sources Java, ressources et tests dans un dépôt dédié.", "Les outils Python, installateurs locaux, journaux et fichiers générés restent hors du dépôt."]},
-        {"title": "Mises à jour", "items": ["Une fenêtre propose de télécharger une nouvelle version ou de remettre la mise à jour à plus tard.", "Après acceptation, un installateur Java séparé attend la fermeture du jeu avant de remplacer le mod.", "Les réglages sont conservés et l’ancienne version est sauvegardée."]}
+        {
+          "title": "Code source",
+          "items": [
+            "Publication des sources Java, ressources et tests dans un dépôt dédié.",
+            "Les outils Python, installateurs locaux, journaux et fichiers générés restent hors du dépôt."
+          ]
+        },
+        {
+          "title": "Mises à jour",
+          "items": [
+            "Une fenêtre propose de télécharger une nouvelle version ou de remettre la mise à jour à plus tard.",
+            "Après acceptation, un installateur Java séparé attend la fermeture du jeu avant de remplacer le mod.",
+            "Les réglages sont conservés et l’ancienne version est sauvegardée."
+          ]
+        }
       ]
     },
     {
@@ -438,8 +592,21 @@
       "title": "Inspectez vos shulkers avec Maj",
       "summary": "Un aperçu interactif de 27 cases permet de consulter le contenu d’une shulker sans ouvrir un autre menu.",
       "sections": [
-        {"title": "Aperçu interactif", "items": ["Maintenez Maj sur une shulker : le pointeur entre dans son aperçu.", "Survolez un objet pour consulter son nom et ses informations d’origine.", "Relâchez Maj pour fermer l’aperçu et retrouver la position initiale du pointeur."]},
-        {"title": "Comportement", "items": ["Le menu sous-jacent ne reçoit plus les clics, déplacements, défilements et saisies pendant l’aperçu.", "Les cases vides, quantités, modèles et glyphes sont conservés. Le contenu non transmis par le serveur est signalé."]}
+        {
+          "title": "Aperçu interactif",
+          "items": [
+            "Maintenez Maj sur une shulker : le pointeur entre dans son aperçu.",
+            "Survolez un objet pour consulter son nom et ses informations d’origine.",
+            "Relâchez Maj pour fermer l’aperçu et retrouver la position initiale du pointeur."
+          ]
+        },
+        {
+          "title": "Comportement",
+          "items": [
+            "Le menu sous-jacent ne reçoit plus les clics, déplacements, défilements et saisies pendant l’aperçu.",
+            "Les cases vides, quantités, modèles et glyphes sont conservés. Le contenu non transmis par le serveur est signalé."
+          ]
+        }
       ]
     },
     {
@@ -449,7 +616,14 @@
       "title": "Mieux retrouver les annonces de l’AH",
       "summary": "La validation des annonces prend en compte les changements de position après actualisation.",
       "sections": [
-        {"title": "Hôtel des ventes", "items": ["Une annonce est recherchée dans toute la page reçue au lieu de dépendre uniquement de sa case précédente.", "Les mises à jour de cases individuelles actualisent également le cache.", "Le prix, le vendeur, la quantité et les composants restent vérifiés avant l’ouverture de la confirmation serveur."]}
+        {
+          "title": "Hôtel des ventes",
+          "items": [
+            "Une annonce est recherchée dans toute la page reçue au lieu de dépendre uniquement de sa case précédente.",
+            "Les mises à jour de cases individuelles actualisent également le cache.",
+            "Le prix, le vendeur, la quantité et les composants restent vérifiés avant l’ouverture de la confirmation serveur."
+          ]
+        }
       ]
     },
     {
@@ -459,7 +633,14 @@
       "title": "Vos commandes, à portée de clic",
       "summary": "Placez vos propres boutons autour de l’inventaire et personnalisez leur apparence et leur action.",
       "sections": [
-        {"title": "Boutons d’inventaire", "items": ["Déplacez les boutons à la souris et configurez une commande avec ses arguments.", "Choisissez une icône, un thème, un style, une couleur et une taille pour chaque bouton.", "Les profils conservent des configurations séparées. Les objets personnalisés de votre inventaire peuvent servir d’icônes."]}
+        {
+          "title": "Boutons d’inventaire",
+          "items": [
+            "Déplacez les boutons à la souris et configurez une commande avec ses arguments.",
+            "Choisissez une icône, un thème, un style, une couleur et une taille pour chaque bouton.",
+            "Les profils conservent des configurations séparées. Les objets personnalisés de votre inventaire peuvent servir d’icônes."
+          ]
+        }
       ]
     },
     {
@@ -469,7 +650,14 @@
       "title": "Une interface qui vous ressemble",
       "summary": "L’atelier d’apparence sépare les palettes, les dispositions et les styles de surface.",
       "sections": [
-        {"title": "Apparence", "items": ["Dix thèmes de couleurs, huit dispositions du hub et sept styles de cartes.", "Un style de HUD transparent avec texte seul, sans fonds ni barres décoratives.", "Chaque panneau et chaque carte de module peuvent remplacer le style global."]}
+        {
+          "title": "Apparence",
+          "items": [
+            "Dix thèmes de couleurs, huit dispositions du hub et sept styles de cartes.",
+            "Un style de HUD transparent avec texte seul, sans fonds ni barres décoratives.",
+            "Chaque panneau et chaque carte de module peuvent remplacer le style global."
+          ]
+        }
       ]
     }
   ]
